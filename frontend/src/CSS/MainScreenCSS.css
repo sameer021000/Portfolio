@@ -1,0 +1,286 @@
+/* --- HERO SECTION --- */
+#heroCard {
+    background: linear-gradient(135deg, var(--primary), #8e44ad);
+    border-radius: var(--radius);
+    padding: 40px 30px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 10px 30px rgba(176, 106, 179, 0.4);
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+#heroName {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+    letter-spacing: -1px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#heroRole {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 400;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+#heroContactBar {
+    background: rgba(255, 255, 255, 0.2);
+    display: inline-flex;
+    padding: 10px 20px;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+    gap: 15px;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+#heroDivider {
+    opacity: 0.5;
+}
+
+/* --- SECTION HEADERS --- */
+#titleExperience, #titleProjects, #titleSkills, #titleEdu, #titleAchieve {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+
+/* Use a pseudo-element on IDs for a decorative line */
+#titleExperience::after, #titleProjects::after, #titleSkills::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to right, var(--accent), transparent);
+    margin-left: 20px;
+    opacity: 0.5;
+}
+
+/* --- EXPERIENCE --- */
+#expCardAccent {
+    background: white;
+    border-left: 5px solid var(--accent);
+    padding: 25px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    box-shadow: var(--shadow);
+    margin-bottom: 40px;
+    transition: transform 0.3s ease;
+}
+
+#expCardAccent:hover {
+    transform: translateX(10px);
+}
+
+#expTopRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+#expCompany {
+    font-size: 1.4rem;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+#expDate {
+    font-size: 0.9rem;
+    color: var(--muted);
+    background: #f0f0f0;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+#expRole {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+#expList {
+    padding-left: 20px;
+    line-height: 1.7;
+    color: #555;
+}
+
+/* --- PROJECTS GRID --- */
+#projectGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+/* Shared Project Card Styling */
+#projCard1, #projCard2, #projCard3 {
+    background: white;
+    padding: 25px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+#projCard1:hover, #projCard2:hover, #projCard3:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    border-color: var(--primary);
+}
+
+#projHeader1, #projHeader2, #projHeader3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 15px;
+}
+
+#pTitle1, #pTitle2, #pTitle3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #222;
+}
+
+#pTech1, #pTech2, #pTech3 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+    background: rgba(247, 178, 103, 0.15);
+    padding: 4px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+#pDesc1, #pDesc2, #pDesc3 {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* --- SKILLS --- */
+#skillsFlex {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+#skillBox1, #skillBox2, #skillBox3 {
+    flex: 1;
+    min-width: 220px;
+    background: linear-gradient(to bottom right, #ffffff, #fcfcfc);
+    padding: 20px;
+    border-radius: var(--radius);
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+#skillHead1, #skillHead2, #skillHead3 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+#skillText1, #skillText2, #skillText3 {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* --- EDU & ACHIEVEMENTS SPLIT --- */
+#gridEduAchieve {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* Education Card */
+#eduCardStyled {
+    background: #2c3e50; /* Dark contrast */
+    color: white;
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+#titleEdu {
+    color: var(--accent);
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
+}
+
+#eduCollege {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+#eduDegree {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    margin-bottom: 15px;
+}
+
+#eduScore {
+    display: inline-block;
+    background: var(--accent);
+    color: #222;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+#eduYear {
+    float: right;
+    opacity: 0.6;
+    margin-top: 5px;
+}
+
+/* Achievements Card */
+#achieveCardStyled {
+    background: white;
+    padding: 30px;
+    border-radius: var(--radius);
+    border: 2px dashed var(--primary); /* Dashed border style */
+}
+
+#titleAchieve {
+    color: var(--primary);
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+#achieveListStyled {
+    list-style: none;
+    padding: 0;
+}
+
+#achItem1, #achItem2, #achItem3 {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    color: #444;
+    font-weight: 500;
+}
+
+#footerSimple {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.8rem;
+    padding-top: 20px;
+    opacity: 0.6;
+}

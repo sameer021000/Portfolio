@@ -1,0 +1,17 @@
+#about-container {
+  max-width: var(--max-width-mobile);
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#about-title {
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+
+#about-text, #about-subtext {
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin-bottom: 12px;
+}

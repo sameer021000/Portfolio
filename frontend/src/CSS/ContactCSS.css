@@ -1,0 +1,28 @@
+#contact-container {
+  max-width: var(--max-width-mobile);
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#contact-title {
+  font-size: 26px;
+  margin-bottom: 14px;
+}
+
+#contact-text {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+#contact-box {
+  background: var(--card-bg);
+  padding: 18px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+#contact-item {
+  margin-bottom: 6px;
+  font-size: 16px;
+}

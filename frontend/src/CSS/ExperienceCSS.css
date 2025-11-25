@@ -1,0 +1,38 @@
+#exp-container {
+  max-width: var(--max-width-mobile);
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#exp-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+#exp-card {
+  background: var(--card-bg);
+  padding: 18px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+#exp-role {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#exp-company {
+  color: var(--primary);
+  margin-top: 4px;
+}
+
+#exp-duration {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+#exp-points li {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
