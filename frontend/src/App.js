@@ -1,10 +1,14 @@
 import './App.css';
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MainScreen from './Folders/MainScreen';
 
 function App() {
   return (
-    <div>
-      This is App.js
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainScreen />} />
+      </Routes>
+    </Router>
   );
 }
 
