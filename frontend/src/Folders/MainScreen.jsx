@@ -3,14 +3,23 @@ import '../CSS/MainScreenCSS.css';
 
 const MainScreen = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      setShowScrollTop(window.scrollY > 400);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   const portfolioData = {
     name: "Sameer Shaik",
@@ -159,7 +168,7 @@ const MainScreen = ({ theme, toggleTheme }) => {
           </div>
           <div className="hero-avatar-container animate-scale">
             <div className="avatar-glow"></div>
-            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix&top=shortHair&accessoriesColor=262e33&facialHair=beardLight&facialHairColor=2c1b18&clothing=shirtVNeck&clothingColor=3c4e5e&hairColor=2c1b18" alt="Male Avatar" className="hero-avatar" id="user-avatar" />
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sameer&hairColor=2c1b18&top=shortHair&facialHair=moustache&facialHairColor=2c1b18&accessories=prescription02&clothing=blazerAndShirt&mouth=smile" alt="Male Avatar" className="hero-avatar" id="user-avatar" />
           </div>
         </div>
       </section>
@@ -291,6 +300,20 @@ const MainScreen = ({ theme, toggleTheme }) => {
         <p>© 2025 {portfolioData.name}. All rights reserved.</p>
         <p>Built with ❤️ using React & Real DevIcons</p>
       </footer>
+
+      {/* Scroll to Top Button */}
+      <button 
+        id="scroll-to-top" 
+        className={`scroll-top-btn ${showScrollTop ? 'visible' : ''}`} 
+        onClick={scrollToTop}
+        aria-label="Scroll to top"
+      >
+        <div className="scroll-btn-content">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13 19V7.83l5.59 5.59L20 12l-8-8-8 8 1.41 1.41L11 7.83V19h2z"/>
+          </svg>
+        </div>
+      </button>
     </div>
   );
 };
