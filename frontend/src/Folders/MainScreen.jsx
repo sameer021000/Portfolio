@@ -1,776 +1,303 @@
-"use client"
+import React, { useState, useEffect } from 'react';
+import '../CSS/MainScreenCSS.css';
 
-import { useState, useEffect } from "react"
-import "../CSS/MainScreenCSS.css"
-
-function MainScreen() {
-  const [activeSection, setActiveSection] = useState("home")
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+const MainScreen = ({ theme, toggleTheme }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = [
-        "heroSection",
-        "languagesToolsSection",
-        "techSection",
-        "experienceSection",
-        "projectsSection",
-        "educationSection",
-        "achievementsSection",
-        "porSection",
-        "certificatesSection",
-      ]
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-      let currentSection = "home"
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          if (rect.top <= 150) {
-            currentSection = section
-          }
-        }
+  const portfolioData = {
+    name: "Rahul Sharma",
+    email: "rahul.sharma@example.com",
+    phone: "+91 98765 43210",
+    linkedin: "https://linkedin.com/in/rahulsharma",
+    github: "https://github.com/rahulsharma",
+    technicalSkills: [
+      { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+      { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+      { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+      { name: "Web Development", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+      { name: "Android Development", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" },
+      { name: "XML", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/chrome/chrome-original.svg" },
+      { name: "MongoDB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+      { name: "Spring-Boot", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" },
+      { name: "Node.Js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+      { name: "React.Js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "HTML", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg" },
+      { name: "CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg" },
+      { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+      { name: "PHP", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
+      { name: "UI/UX", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
+      { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+      { name: "GitHub", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" }
+    ],
+    experience: [
+      {
+        role: "Software Development Intern",
+        company: "TechNova Solutions",
+        description: "Developed and optimized RESTful APIs using Spring-Boot and managed complex database schemas in MySQL. Improved application performance by 25% through efficient coding practices. Collaborated with senior engineers on frontend integration.",
+        duration: "Jun 2023 - Aug 2023"
+      },
+      {
+        role: "Web Intern",
+        company: "Digital Dreamers",
+        description: "Worked on responsive web designs using React.js and CSS. Translated UI/UX designs into functional components with high performance. Participated in daily stand-ups and code reviews.",
+        duration: "Jan 2023 - May 2023"
       }
-      setActiveSection(currentSection)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      setIsMenuOpen(false)
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
+    ],
+    projects: [
+      {
+        name: "E-Commerce Platform",
+        liveUrl: "#",
+        githubUrl: "#",
+        tech: ["React.Js", "Node.Js", "MongoDB", "CSS"],
+        description: [
+          "Implemented secure user authentication and payment gateway integration.",
+          "Designed responsive product catalog with advanced filtering.",
+          "Real-time order tracking and inventory management system."
+        ],
+        image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1000&auto=format&fit=crop"
+      },
+      {
+        name: "Task Management App",
+        liveUrl: "#",
+        githubUrl: "#",
+        tech: ["Java", "Spring-Boot", "MySQL"],
+        description: [
+          "Built RESTful APIs for task CRUD operations.",
+          "Implemented role-based access control for teams.",
+          "Notification system for upcoming deadlines and task updates."
+        ],
+        image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=1000&auto=format&fit=crop"
+      }
+    ],
+    education: [
+      {
+        level: "Graduation",
+        qualification: "Bachelor Of Technology (B.Tech)",
+        institution: "SRM Institute of Science and Technology",
+        location: "Chennai, Tamil Nadu",
+        board: null,
+        knowledge: ["Java", "HTML", "CSS", "JavaScript", "React.Js"],
+        gpa: "8.5",
+        period: "Aug 2019 - May 2023"
+      },
+      {
+        level: "Intermediate",
+        qualification: "12th",
+        institution: "Narayana Junior College",
+        location: "Vijayawada, Andhra Pradesh",
+        board: "Board of Intermediate Education Andhra Pradesh",
+        knowledge: ["Maths", "Physics", "Chemistry"],
+        gpa: "9.8",
+        period: "Jun 2017 - Mar 2019"
+      },
+      {
+        level: "School",
+        qualification: "10th",
+        institution: "Ravindra Bharathi School",
+        location: "Guntur, Andhra Pradesh",
+        board: "Board of Secondary Education Andhra Pradesh",
+        knowledge: ["Telugu", "Hindi", "English", "Maths", "Science", "Social"],
+        gpa: "9.5",
+        period: "Jun 2016 - Apr 2017"
+      }
+    ],
+    achievements: [
+      { title: "Hackathon Winner 2022", desc: "Secured 1st place in the National Level Smart India Hackathon for developing an innovative solution for waste management using IoT and Cloud technologies." },
+      { title: "Best Coder Award", desc: "Recognized as the 'Best Coder' in the annual college tech fest for solving complex algorithmic problems efficiently in Java." }
+    ],
+    responsibilities: [
+      { title: "Technical Lead - Coding Club", desc: "Led a team of 50+ members, organized weekly coding contests, and conducted workshops on Web Development and Data Structures, impacting over 200 students." },
+      { title: "Event Coordinator", desc: "Managed logistics and scheduling for the annual technical symposium, coordinating with 10+ sponsors and ensuring smooth execution of 15+ events." }
+    ],
+    certificates: [
+      { title: "AWS Certified Cloud Practitioner", desc: "Validated overall understanding of the AWS Cloud platform, including basic security and compliance aspects." },
+      { title: "Full Stack Web Development", desc: "Completed intensive bootcamp covering React, Node.js, Express, and MongoDB with hands-on projects." },
+      { title: "Java Programming Masterclass", desc: "Advanced concepts in Java including multithreading, collections framework, and database connectivity." }
+    ]
+  };
 
   return (
-    <div id="mainPage">
-      <nav id="navbarTop">
-        <div id="navbarContainer">
-          <div id="navbarLogo">
-            <span id="navbarLogoText">AK</span>
-          </div>
-
-          <button id="navbarToggle" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle navigation">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-
-          <ul id="navbarMenu" className={isMenuOpen ? "active" : ""}>
-            <li>
-              <a
-                href="#"
-                onClick={() => scrollToSection("heroSection")}
-                className={activeSection === "heroSection" ? "active" : ""}
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={() => scrollToSection("languagesToolsSection")}
-                className={activeSection === "languagesToolsSection" ? "active" : ""}
-              >
-                Languages & Tools
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={() => scrollToSection("techSection")}
-                className={activeSection === "techSection" ? "active" : ""}
-              >
-                Skills
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={() => scrollToSection("experienceSection")}
-                className={activeSection === "experienceSection" ? "active" : ""}
-              >
-                Experience
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={() => scrollToSection("projectsSection")}
-                className={activeSection === "projectsSection" ? "active" : ""}
-              >
-                Projects
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={() => scrollToSection("educationSection")}
-                className={activeSection === "educationSection" ? "active" : ""}
-              >
-                Education
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                onClick={() => scrollToSection("achievementsSection")}
-                className={activeSection === "achievementsSection" ? "active" : ""}
-              >
-                Achievements
-              </a>
-            </li>
+    <div id="main-container" className="main-container">
+      {/* Navigation */}
+      <nav id="navbar" className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+        <div className="nav-content">
+          <h2 className="logo" id="site-logo">Portfolio<span>.</span></h2>
+          <ul className="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
           </ul>
+          <button onClick={toggleTheme} className="theme-toggle" id="theme-btn">
+            {theme === 'light' ? '🌙' : '☀️'}
+          </button>
         </div>
       </nav>
 
-      <div id="mainInner">
-        {/* HERO / PROFILE */}
-        <section id="heroSection">
-          <div id="heroLeftSide">
-            <div id="heroBadgeRow">
-              <div id="heroBadgeMain">Software Engineer</div>
+      {/* Hero Section */}
+      <section id="home" className="hero-section">
+        <div className="hero-content">
+          <div className="hero-text">
+            <h1 className="hero-title animate-up" id="full-name">Hi, I'm <span className="highlight">{portfolioData.name}</span></h1>
+            <p className="hero-subtitle animate-up delay-1">Full Stack Developer passionate about building scalable web applications and intuitive user experiences.</p>
+            <div className="contact-info animate-up delay-2">
+              <span className="contact-item" id="mail-id">📧 {portfolioData.email}</span>
+              <span className="contact-item" id="phone-number">📞 {portfolioData.phone}</span>
             </div>
-
-            <h1 id="heroName">Aarav Devansh Kapoor</h1>
-
-            <p id="heroSubtitle">
-              Crafting immersive web experiences with clean code, modern animations, and thoughtful design.
-            </p>
-
-            <div id="heroContactRow">
-              <div id="heroContactCard">
-                <div id="heroContactLabel">Email</div>
-                <div id="heroContactValue">aarav.kapoor.dev@example.com</div>
-              </div>
-              <div id="heroContactCardPhone">
-                <div id="heroContactLabel">Phone</div>
-                <div id="heroContactValue">+91 98765 43210</div>
-              </div>
-            </div>
-
-            <div id="heroSocialRow">
-              <a
-                id="heroSocialLinkedin"
-                href="https://www.linkedin.com/in/aarav-devansh-random"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <div id="heroSocialCircleLinkedin">
-                  <span id="heroSocialIconLinkedin">in</span>
-                </div>
-                <span id="heroSocialText">LinkedIn</span>
+            <div className="social-links animate-up delay-3">
+              <a href={portfolioData.linkedin} className="social-btn linkedin-btn" id="linkedin-link" title="LinkedIn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
               </a>
-              <a id="heroSocialGithub" href="https://github.com/aaravdevansh-random" target="_blank" rel="noreferrer">
-                <div id="heroSocialCircleGithub">
-                  <span id="heroSocialIconGithub"></span>
-                </div>
-                <span id="heroSocialText">GitHub</span>
+              <a href={portfolioData.github} className="social-btn github-btn" id="github-link" title="GitHub">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.042-1.416-4.042-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
               </a>
             </div>
           </div>
-
-          <div id="heroRightSide">
-            <div id="avatarOuterGlow">
-              <div id="avatarOrbitOne"></div>
-              <div id="avatarOrbitTwo"></div>
-              <div id="avatarCard">
-                <div id="avatarGradientRing">
-                  <div id="avatarCircle">
-                    <div id="avatarInnerFace">
-                      <div id="avatarHair"></div>
-                      <div id="avatarHead">
-                        <div id="avatarEyesRow">
-                          <span id="avatarEyeLeft"></span>
-                          <span id="avatarEyeRight"></span>
-                        </div>
-                        <div id="avatarMouth"></div>
-                      </div>
-                      <div id="avatarBody">
-                        <div id="avatarShirt"></div>
-                        <div id="avatarJacket"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="avatarLabelBlock">
-                  <div id="avatarNameLabel">Aarav Kapoor</div>
-                  <div id="avatarRoleLabel">Full Stack Developer</div>
-                </div>
-              </div>
-            </div>
+          <div className="hero-avatar-container animate-scale">
+            <div className="avatar-glow"></div>
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix&top=shortHair&accessoriesColor=262e33&facialHair=beardLight&facialHairColor=2c1b18&clothing=shirtVNeck&clothingColor=3c4e5e&hairColor=2c1b18" alt="Male Avatar" className="hero-avatar" id="user-avatar" />
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section id="languagesToolsSection">
-          <h2 id="sectionTitle">
-            Languages & <span id="sectionHighlight">Tools</span>
-          </h2>
-          <div id="languagesToolsGrid">
-            <div id="langToolCategory">
-              <div id="langToolCategoryTitle">Languages</div>
-              <div id="langToolIconsRow">
-                <div id="langToolIcon" title="Java" style={{ background: "linear-gradient(135deg, #f97316, #ea580c)" }}>
-                  <span>Java</span>
-                </div>
-                <div
-                  id="langToolIcon"
-                  title="Python"
-                  style={{ background: "linear-gradient(135deg, #3776ab, #2c5aa0)" }}
-                >
-                  <span>Py</span>
-                </div>
-                <div
-                  id="langToolIcon"
-                  title="JavaScript"
-                  style={{ background: "linear-gradient(135deg, #facc15, #eab308)" }}
-                >
-                  <span>JS</span>
-                </div>
-                <div id="langToolIcon" title="PHP" style={{ background: "linear-gradient(135deg, #777bb4, #6b5fa8)" }}>
-                  <span>PHP</span>
-                </div>
-                <div id="langToolIcon" title="HTML" style={{ background: "linear-gradient(135deg, #f97316, #fb923c)" }}>
-                  <span>HTML</span>
-                </div>
-                <div id="langToolIcon" title="CSS" style={{ background: "linear-gradient(135deg, #2563eb, #1d4ed8)" }}>
-                  <span>CSS</span>
+      {/* Technical Skills Section */}
+      <section id="skills" className="section skills-section">
+        <h2 className="section-title">Technical <span className="highlight">Skills</span></h2>
+        <div className="skills-grid" id="technical-skills-grid">
+          {portfolioData.technicalSkills.map((skill) => (
+            <div className="skill-item-card card" key={skill.name}>
+              <img src={skill.logo} alt={skill.name} className="skill-logo" />
+              <span className="skill-name">{skill.name}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="section projects-section">
+        <h2 className="section-title">Featured <span className="highlight">Projects</span></h2>
+        <div className="projects-grid" id="projects-container">
+          {portfolioData.projects.map((project, index) => (
+            <div className="project-card card" key={index} id={`project-${index}`}>
+              <div className="project-image" style={{ backgroundImage: `url(${project.image})` }}>
+                <div className="project-overlay">
+                  <a href={project.liveUrl} className="overlay-link">Live Demo</a>
+                  <a href={project.githubUrl} className="overlay-link">GitHub Code</a>
                 </div>
               </div>
-            </div>
-
-            <div id="langToolCategory">
-              <div id="langToolCategoryTitle">Frameworks & Libraries</div>
-              <div id="langToolIconsRow">
-                <div
-                  id="langToolIcon"
-                  title="React.js"
-                  style={{ background: "linear-gradient(135deg, #61dafb, #41b8d5)" }}
-                >
-                  <span>React</span>
+              <div className="project-info">
+                <h3 className="project-name">{project.name}</h3>
+                <div className="project-tech">
+                  {project.tech.map(t => <span key={t} className="tech-badge">{t}</span>)}
                 </div>
-                <div
-                  id="langToolIcon"
-                  title="Node.js"
-                  style={{ background: "linear-gradient(135deg, #68a063, #5a8c56)" }}
-                >
-                  <span>Node</span>
-                </div>
-                <div
-                  id="langToolIcon"
-                  title="Spring Boot"
-                  style={{ background: "linear-gradient(135deg, #6db33f, #5da238)" }}
-                >
-                  <span>Spring</span>
-                </div>
+                <ul className="project-desc">
+                  {project.description.map((point, i) => <li key={i}>{point}</li>)}
+                </ul>
               </div>
             </div>
+          ))}
+        </div>
+      </section>
 
-            <div id="langToolCategory">
-              <div id="langToolCategoryTitle">Databases & Tools</div>
-              <div id="langToolIconsRow">
-                <div
-                  id="langToolIcon"
-                  title="MySQL"
-                  style={{ background: "linear-gradient(135deg, #00758f, #005a75)" }}
-                >
-                  <span>MySQL</span>
+      {/* Experience Section */}
+      <section id="experience" className="section experience-section">
+        <h2 className="section-title">Work <span className="highlight">Experience</span></h2>
+        <div className="experience-container" id="experience-list">
+          {portfolioData.experience.map((exp, idx) => (
+            <div className="experience-card card" key={idx}>
+              <div className="exp-header">
+                <h3 className="exp-role">{exp.role}</h3>
+                <span className="exp-duration">{exp.duration}</span>
+              </div>
+              <p className="exp-company">{exp.company}</p>
+              <p className="exp-desc">{exp.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section id="education" className="section education-section">
+        <h2 className="section-title">My <span className="highlight">Education</span></h2>
+        <div className="education-timeline" id="education-timeline">
+          {portfolioData.education.map((edu, idx) => (
+            <div className="edu-item" key={idx}>
+              <div className="edu-dot"></div>
+              <div className="edu-card card">
+                <div className="edu-header">
+                  <h3 className="edu-qual">{edu.qualification} <span className="edu-level">({edu.level})</span></h3>
+                  <span className="edu-period">{edu.period}</span>
                 </div>
-                <div
-                  id="langToolIcon"
-                  title="MongoDB"
-                  style={{ background: "linear-gradient(135deg, #13aa52, #0d7d3a)" }}
-                >
-                  <span>Mongo</span>
-                </div>
-                <div id="langToolIcon" title="Git" style={{ background: "linear-gradient(135deg, #f34f29, #d63f1d)" }}>
-                  <span>Git</span>
-                </div>
-                <div
-                  id="langToolIcon"
-                  title="GitHub"
-                  style={{ background: "linear-gradient(135deg, #333333, #1a1a1a)" }}
-                >
-                  <span>GitHub</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* TECHNICAL SKILLS */}
-        <section id="techSection">
-          <h2 id="sectionTitle">
-            Technical <span id="sectionHighlight">Skills</span>
-          </h2>
-          <div id="techCategoriesGrid">
-            <div id="techCategoryCardCore">
-              <div id="techCategoryTitle">Core Languages</div>
-              <div id="techChipsRow">
-                <span id="techChip">Java</span>
-                <span id="techChip">Python</span>
-                <span id="techChip">PHP</span>
-                <span id="techChip">JavaScript</span>
-              </div>
-            </div>
-
-            <div id="techCategoryCardWeb">
-              <div id="techCategoryTitle">Web Development</div>
-              <div id="techChipsRow">
-                <span id="techChip">HTML</span>
-                <span id="techChip">CSS</span>
-                <span id="techChip">React.js</span>
-                <span id="techChip">Node.js</span>
-                <span id="techChip">Web Development</span>
-                <span id="techChip">UI/UX</span>
-              </div>
-            </div>
-
-            <div id="techCategoryCardBackend">
-              <div id="techCategoryTitle">Backend & Databases</div>
-              <div id="techChipsRow">
-                <span id="techChip">Spring Boot</span>
-                <span id="techChip">MySQL</span>
-                <span id="techChip">MongoDB</span>
-              </div>
-            </div>
-
-            <div id="techCategoryCardOther">
-              <div id="techCategoryTitle">Mobile & Tools</div>
-              <div id="techChipsRow">
-                <span id="techChip">Android Development</span>
-                <span id="techChip">XML</span>
-                <span id="techChip">Git</span>
-                <span id="techChip">GitHub</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="experienceSection">
-          <h2 id="sectionTitle">
-            Work <span id="sectionHighlight">Experience</span>
-          </h2>
-          <div id="experienceTimeline">
-            <div id="experienceConnectorLine"></div>
-
-            <div id="experienceCard">
-              <div id="experienceDot"></div>
-              <div id="experienceContent">
-                <div id="experienceHeaderRow">
-                  <div id="experienceTitleSide">
-                    <div id="experienceRole">Senior Frontend Developer</div>
-                    <div id="experienceCompany">Tech Innovations Inc.</div>
-                  </div>
-                  <div id="experienceMetaSide">
-                    <div id="experienceDates">Jan 2022 - Present</div>
+                <p className="edu-inst">{edu.institution}</p>
+                <p className="edu-loc">📍 {edu.location}</p>
+                {edu.board && <p className="edu-board"><strong>Board:</strong> {edu.board}</p>}
+                <div className="edu-knowledge">
+                  <strong>Knowledge Gained:</strong>
+                  <div className="knowledge-tags">
+                    {edu.knowledge.map(k => <span key={k} className="k-tag">{k}</span>)}
                   </div>
                 </div>
-                <div id="experienceDescriptionRow">
-                  <ul id="experienceBulletList">
-                    <li>
-                      Led the redesign of core user-facing dashboard using React, improving load times by 40% and user
-                      engagement by 35%.
-                    </li>
-                    <li>
-                      Collaborated with backend engineers to optimize API integrations and implemented caching
-                      strategies for better performance.
-                    </li>
-                    <li>
-                      Mentored junior developers on React best practices, component architecture, and modern state
-                      management patterns.
-                    </li>
-                  </ul>
-                </div>
+                <div className="edu-gpa">GPA: <span className="gpa-score">{edu.gpa}/10.0</span></div>
               </div>
             </div>
+          ))}
+        </div>
+      </section>
 
-            <div id="experienceCard">
-              <div id="experienceDot"></div>
-              <div id="experienceContent">
-                <div id="experienceHeaderRow">
-                  <div id="experienceTitleSide">
-                    <div id="experienceRole">Full Stack Developer</div>
-                    <div id="experienceCompany">Digital Solutions Ltd.</div>
-                  </div>
-                  <div id="experienceMetaSide">
-                    <div id="experienceDates">Jun 2020 - Dec 2021</div>
-                  </div>
-                </div>
-                <div id="experienceDescriptionRow">
-                  <ul id="experienceBulletList">
-                    <li>
-                      Built and deployed 5+ production-ready web applications using MERN stack, serving 50,000+ monthly
-                      users.
-                    </li>
-                    <li>
-                      Designed RESTful APIs with Node.js and Express, implemented database optimization strategies with
-                      MongoDB indexing.
-                    </li>
-                    <li>
-                      Developed automated testing suites achieving 85% code coverage and reduced production bugs by 30%.
-                    </li>
-                  </ul>
-                </div>
+      {/* Achievements & Responsibilities */}
+      <section className="section split-section">
+        <div className="achievements-col" id="achievements-section">
+          <h2 className="section-title"><span className="icon">🏆</span> Achievements</h2>
+          {portfolioData.achievements.map((item, i) => (
+            <div className="mini-card card" key={i}>
+              <h4>{item.title}</h4>
+              <p>{item.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="responsibility-col" id="responsibility-section">
+          <h2 className="section-title"><span className="icon">🤝</span> Responsibilities</h2>
+          {portfolioData.responsibilities.map((item, i) => (
+            <div className="mini-card card" key={i}>
+              <h4>{item.title}</h4>
+              <p>{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Certificates Section */}
+      <section id="certificates" className="section certificates-section">
+        <h2 className="section-title">Certifications</h2>
+        <div className="cert-grid" id="certificates-grid">
+          {portfolioData.certificates.map((cert, i) => (
+            <div className="cert-card card" key={i}>
+              <div className={`cert-icon-box box-${i % 3}`}>📜</div>
+              <div className="cert-content">
+                <h4>{cert.title}</h4>
+                <p>{cert.desc}</p>
               </div>
             </div>
+          ))}
+        </div>
+      </section>
 
-            <div id="experienceCard">
-              <div id="experienceDot"></div>
-              <div id="experienceContent">
-                <div id="experienceHeaderRow">
-                  <div id="experienceTitleSide">
-                    <div id="experienceRole">Junior Developer</div>
-                    <div id="experienceCompany">StartUp Ventures</div>
-                  </div>
-                  <div id="experienceMetaSide">
-                    <div id="experienceDates">Feb 2019 - May 2020</div>
-                  </div>
-                </div>
-                <div id="experienceDescriptionRow">
-                  <ul id="experienceBulletList">
-                    <li>
-                      Developed responsive UI components using HTML, CSS, and JavaScript, ensuring cross-browser
-                      compatibility.
-                    </li>
-                    <li>
-                      Fixed critical bugs and implemented feature requests, improving application stability and user
-                      experience.
-                    </li>
-                    <li>
-                      Participated in code reviews and contributed to team knowledge base with technical documentation.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* PROJECTS */}
-        <section id="projectsSection">
-          <h2 id="sectionTitle">
-            Featured <span id="sectionHighlight">Projects</span>
-          </h2>
-          <div id="projectsGrid">
-            <article id="projectCard">
-              <div id="projectHeaderRow">
-                <div id="projectTitleArea">
-                  <div id="projectName">Nyra Task Orbit</div>
-                  <div id="projectTechBadgesRow">
-                    <span id="projectTechBadge">React.js</span>
-                    <span id="projectTechBadge">Node.js</span>
-                    <span id="projectTechBadge">MongoDB</span>
-                    <span id="projectTechBadge">Tailwind</span>
-                  </div>
-                </div>
-                <div id="projectLinksArea">
-                  <a id="projectLiveLink" href="https://nyra-task-orbit.live.example" target="_blank" rel="noreferrer">
-                    Live
-                  </a>
-                  <a
-                    id="projectCodeLink"
-                    href="https://github.com/aaravdevansh-random/nyra-task-orbit"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span id="projectCodeIcon"></span>
-                  </a>
-                </div>
-              </div>
-              <div id="projectDetailsRow">
-                <div id="projectDescriptionCol">
-                  <ul id="projectBulletList">
-                    <li>
-                      Built a responsive task workspace with drag-and-drop kanban boards and real-time progress
-                      indicators.
-                    </li>
-                    <li>Implemented JWT authentication and role-based access to securely isolate team workspaces.</li>
-                    <li>
-                      Added animated micro-interactions for status changes and due-date alerts to improve engagement.
-                    </li>
-                  </ul>
-                </div>
-                <div id="projectMetaCol">
-                  <div id="projectMetaLabel">Stack</div>
-                  <p id="projectMetaText">React, Node.js, Express, MongoDB, JWT, Framer Motion</p>
-                </div>
-              </div>
-            </article>
-
-            <article id="projectCard">
-              <div id="projectHeaderRow">
-                <div id="projectTitleArea">
-                  <div id="projectName">PulseFit Analytics</div>
-                  <div id="projectTechBadgesRow">
-                    <span id="projectTechBadge">Java</span>
-                    <span id="projectTechBadge">Spring Boot</span>
-                    <span id="projectTechBadge">MySQL</span>
-                  </div>
-                </div>
-                <div id="projectLinksArea">
-                  <a
-                    id="projectLiveLink"
-                    href="https://pulsefit-analytics.live.example"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Live
-                  </a>
-                  <a
-                    id="projectCodeLink"
-                    href="https://github.com/aaravdevansh-random/pulsefit-analytics"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span id="projectCodeIcon"></span>
-                  </a>
-                </div>
-              </div>
-              <div id="projectDetailsRow">
-                <div id="projectDescriptionCol">
-                  <ul id="projectBulletList">
-                    <li>Designed a fitness metrics dashboard with animated charts and daily progress insights.</li>
-                    <li>Developed REST APIs in Spring Boot with layered architecture and DTO mappings.</li>
-                    <li>Optimized complex SQL queries and indexing to generate weekly reports under 200 ms.</li>
-                  </ul>
-                </div>
-                <div id="projectMetaCol">
-                  <div id="projectMetaLabel">Stack</div>
-                  <p id="projectMetaText">Java, Spring Boot, MySQL, Charting library, Docker</p>
-                </div>
-              </div>
-            </article>
-
-            <article id="projectCard">
-              <div id="projectHeaderRow">
-                <div id="projectTitleArea">
-                  <div id="projectName">CampusConnect Nexus</div>
-                  <div id="projectTechBadgesRow">
-                    <span id="projectTechBadge">React.js</span>
-                    <span id="projectTechBadge">Node.js</span>
-                    <span id="projectTechBadge">MongoDB</span>
-                  </div>
-                </div>
-                <div id="projectLinksArea">
-                  <a
-                    id="projectLiveLink"
-                    href="https://campusconnect-nexus.live.example"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Live
-                  </a>
-                  <a
-                    id="projectCodeLink"
-                    href="https://github.com/aaravdevansh-random/campusconnect-nexus"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span id="projectCodeIcon"></span>
-                  </a>
-                </div>
-              </div>
-              <div id="projectDetailsRow">
-                <div id="projectDescriptionCol">
-                  <ul id="projectBulletList">
-                    <li>Created a central hub for clubs, events, and resources with mobile-first navigation.</li>
-                    <li>Implemented notification streams and event reminders with smooth entry animations.</li>
-                    <li>Integrated role-based dashboards for students, mentors, and administrators.</li>
-                  </ul>
-                </div>
-                <div id="projectMetaCol">
-                  <div id="projectMetaLabel">Stack</div>
-                  <p id="projectMetaText">React, Node.js, MongoDB, WebSockets, JWT</p>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        {/* EDUCATION */}
-        <section id="educationSection">
-          <h2 id="sectionTitle">
-            Education <span id="sectionHighlight">Journey</span>
-          </h2>
-          <div id="educationTimeline">
-            <div id="educationConnectorLine"></div>
-
-            <div id="educationCard">
-              <div id="educationDot"></div>
-              <div id="educationContent">
-                <div id="educationHeaderRow">
-                  <div id="educationTitleSide">
-                    <div id="educationInstitution">Meridian High School</div>
-                    <div id="educationLocation">Visakhapatnam, Andhra Pradesh</div>
-                  </div>
-                  <div id="educationMetaSide">
-                    <div id="educationDegree">10th</div>
-                    <div id="educationBoard">Board of Secondary Education Andhra Pradesh</div>
-                    <div id="educationDates">June 2015 - April 2016</div>
-                    <div id="educationGPA">GPA: 9.4 / 10.0</div>
-                  </div>
-                </div>
-                <div id="educationKnowledgeRow">
-                  <div id="educationKnowledgeLabel">Knowledge</div>
-                  <div id="educationTagsRow">
-                    <span id="educationTag">Telugu</span>
-                    <span id="educationTag">Hindi</span>
-                    <span id="educationTag">English</span>
-                    <span id="educationTag">Maths</span>
-                    <span id="educationTag">Science</span>
-                    <span id="educationTag">Social</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div id="educationCard">
-              <div id="educationDot"></div>
-              <div id="educationContent">
-                <div id="educationHeaderRow">
-                  <div id="educationTitleSide">
-                    <div id="educationInstitution">Sri Aditya Junior College</div>
-                    <div id="educationLocation">Rajahmundry, Andhra Pradesh</div>
-                  </div>
-                  <div id="educationMetaSide">
-                    <div id="educationDegree">12th</div>
-                    <div id="educationBoard">Board of Intermediate Education Andhra Pradesh</div>
-                    <div id="educationDates">June 2016 - March 2018</div>
-                    <div id="educationGPA">GPA: 9.1 / 10.0</div>
-                  </div>
-                </div>
-                <div id="educationKnowledgeRow">
-                  <div id="educationKnowledgeLabel">Knowledge</div>
-                  <div id="educationTagsRow">
-                    <span id="educationTag">Maths</span>
-                    <span id="educationTag">Physics</span>
-                    <span id="educationTag">Chemistry</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div id="educationCard">
-              <div id="educationDot"></div>
-              <div id="educationContent">
-                <div id="educationHeaderRow">
-                  <div id="educationTitleSide">
-                    <div id="educationInstitution">Horizon Institute of Technology</div>
-                    <div id="educationLocation">Hyderabad, Telangana</div>
-                  </div>
-                  <div id="educationMetaSide">
-                    <div id="educationDegree">Bachelor of Technology (B.Tech)</div>
-                    <div id="educationBoard">Computer Science Engineering</div>
-                    <div id="educationDates">August 2018 - May 2022</div>
-                    <div id="educationGPA">GPA: 8.7 / 10.0</div>
-                  </div>
-                </div>
-                <div id="educationKnowledgeRow">
-                  <div id="educationKnowledgeLabel">Knowledge</div>
-                  <div id="educationTagsRow">
-                    <span id="educationTag">Java</span>
-                    <span id="educationTag">HTML</span>
-                    <span id="educationTag">CSS</span>
-                    <span id="educationTag">JavaScript</span>
-                    <span id="educationTag">React.js</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="achievementsSection">
-          <h2 id="sectionTitle">
-            Achievements <span id="sectionHighlight">& Highlights</span>
-          </h2>
-          <div id="achievementsGrid">
-            <div id="achievementCard">
-              <div id="achievementTitle">Winner, Cloud Native HackFest</div>
-              <p id="achievementDescription">
-                Led a 4-member team to build a real-time collaboration board using microservices and containerized
-                deployments.
-              </p>
-            </div>
-
-            <div id="achievementCard">
-              <div id="achievementTitle">Global Java Coding Challenge</div>
-              <p id="achievementDescription">
-                Ranked among top performers with 12,000+ participants in a time-bound algorithmic challenge.
-              </p>
-            </div>
-
-            <div id="achievementCard">
-              <div id="achievementTitle">Campus Developer Recognition</div>
-              <p id="achievementDescription">
-                Recognized for contributions to developer clubs, workshops, and mentoring peers.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section id="porSection">
-          <h2 id="sectionTitle">
-            Positions of <span id="sectionHighlight">Responsibility</span>
-          </h2>
-          <div id="porGrid">
-            <div id="porCard">
-              <div id="porPosition">Lead, Developer Students Club</div>
-              <p id="porDescription">
-                Organized technical meetups, conducted hands-on sessions on React and APIs, and coordinated
-                inter-college hackathons with 200+ participants.
-              </p>
-            </div>
-
-            <div id="porCard">
-              <div id="porPosition">Project Mentor</div>
-              <p id="porDescription">
-                Mentored junior teams on developing full-stack applications, reviewing code, and refining UI/UX for
-                real-world usability.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* CERTIFICATES */}
-        <section id="certificatesSection">
-          <h2 id="sectionTitle">
-            Certificates <span id="sectionHighlight">& Training</span>
-          </h2>
-          <div id="certificatesGrid">
-            <div id="certificateCard">
-              <div id="certificateTitle">Advanced React and Modern Frontend Architectures</div>
-              <p id="certificateDescription">
-                Completed an intensive program focusing on React hooks, context patterns, performance optimization, and
-                design systems.
-              </p>
-            </div>
-
-            <div id="certificateCard">
-              <div id="certificateTitle">Backend APIs with Node.js & MongoDB</div>
-              <p id="certificateDescription">
-                Built production-grade REST APIs with Node.js, Express, and MongoDB including authentication,
-                validation, and deployment.
-              </p>
-            </div>
-
-            <div id="certificateCard">
-              <div id="certificateTitle">Java and Spring Boot Microservices</div>
-              <p id="certificateDescription">
-                Designed microservice-based backends with Spring Boot, documenting services and implementing CI/CD
-                pipelines.
-              </p>
-            </div>
-          </div>
-        </section>
-      </div>
+      {/* Footer */}
+      <footer className="footer" id="main-footer">
+        <p>© 2024 {portfolioData.name}. All rights reserved.</p>
+        <p>Built with ❤️ using React & Real DevIcons</p>
+      </footer>
     </div>
-  )
-}
+  );
+};
 
-export default MainScreen
+export default MainScreen;

@@ -1,201 +1,66 @@
-/* Portfolio/frontend/src/App.css */
-
 :root {
-  --bg-main: #050816;
-  --bg-elevated: rgba(15, 23, 42, 0.9);
-  --bg-elevated-soft: rgba(15, 23, 42, 0.7);
-  --accent: #7c3aed;
-  --accent-soft: rgba(124, 58, 237, 0.22);
-  --accent-strong: #a855f7;
-  --text-main: #e5e7eb;
-  --text-soft: #9ca3af;
-  --border-soft: rgba(148, 163, 184, 0.45);
-  --glass-border: rgba(255, 255, 255, 0.15);
-  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.85);
-  --shadow-subtle: 0 10px 30px rgba(15, 23, 42, 0.6);
-  --card-radius: 22px;
-  --transition-fast: 0.25s ease;
-  --transition-med: 0.4s ease;
+  --bg-color: #f8fafc;
+  --text-color: #1e293b;
+  --primary-color: #3b82f6;
+  --secondary-color: #10b981;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --accent-color: #6366f1;
+  --gradient-start: #3b82f6;
+  --gradient-end: #10b981;
 }
 
-[data-theme='light'] {
-  --bg-main: #f3f4f6;
-  --bg-elevated: rgba(255, 255, 255, 0.9);
-  --bg-elevated-soft: rgba(255, 255, 255, 0.8);
-  --accent: #6366f1;
-  --accent-soft: rgba(99, 102, 241, 0.18);
-  --accent-strong: #4f46e5;
-  --text-main: #111827;
-  --text-soft: #4b5563;
-  --border-soft: rgba(209, 213, 219, 0.9);
-  --glass-border: rgba(148, 163, 184, 0.4);
-  --shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.16);
-  --shadow-subtle: 0 10px 26px rgba(15, 23, 42, 0.1);
+[data-theme='dark'] {
+  --bg-color: #0f172a;
+  --text-color: #f1f5f9;
+  --primary-color: #60a5fa;
+  --secondary-color: #34d399;
+  --card-bg: #1e293b;
+  --border-color: #334155;
+  --nav-bg: rgba(15, 23, 42, 0.8);
+  --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+  --accent-color: #818cf8;
+  --gradient-start: #60a5fa;
+  --gradient-end: #34d399;
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html,
-body,
-#root {
+* {
   margin: 0;
   padding: 0;
-  height: 100%;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    sans-serif;
-  background-color: var(--bg-main);
-  color: var(--text-main);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
 }
 
-/* App root and background animation */
-
-#appRoot {
+.App {
   min-height: 100vh;
-  background: radial-gradient(circle at top left, #1e293b 0, transparent 55%),
-    radial-gradient(circle at bottom right, #4c1d95 0, transparent 55%),
-    linear-gradient(135deg, #020617, #020617);
-  position: relative;
-  overflow: hidden;
 }
 
-/* Floating blobs for subtle animated background */
-
-#appRoot::before,
-#appRoot::after {
-  content: '';
-  position: fixed;
-  width: 380px;
-  height: 380px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 30%, #a855f7, transparent 60%);
-  opacity: 0.16;
-  filter: blur(4px);
-  z-index: 0;
-  pointer-events: none;
-  transition: transform var(--transition-med);
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-#appRoot::before {
-  top: -120px;
-  right: -80px;
-  animation: blobMove1 22s infinite alternate ease-in-out;
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
 }
 
-#appRoot::after {
-  bottom: -150px;
-  left: -100px;
-  background: radial-gradient(circle at 30% 30%, #22d3ee, transparent 60%);
-  animation: blobMove2 26s infinite alternate ease-in-out;
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
 }
 
-@keyframes blobMove1 {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-20px, 30px, 0) scale(1.05);
-  }
-  100% {
-    transform: translate3d(10px, -20px, 0) scale(1.08);
-  }
-}
-
-@keyframes blobMove2 {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(30px, -20px, 0) scale(1.07);
-  }
-  100% {
-    transform: translate3d(-10px, 25px, 0) scale(1.03);
-  }
-}
-
-/* Theme toggle */
-
-#themeToggleButton {
-  position: fixed;
-  top: 18px;
-  right: 18px;
-  z-index: 20;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border-radius: 999px;
-  border: 1px solid var(--glass-border);
-  padding: 6px 12px;
-  background: linear-gradient(
-      135deg,
-      rgba(15, 23, 42, 0.9),
-      rgba(15, 23, 42, 0.65)
-    ),
-    linear-gradient(135deg, rgba(148, 163, 184, 0.5), transparent 60%);
-  backdrop-filter: blur(18px);
-  color: var(--text-main);
-  cursor: pointer;
-  font-size: 13px;
-  letter-spacing: 0.02em;
-  box-shadow: var(--shadow-subtle);
-  transition: transform var(--transition-fast),
-    box-shadow var(--transition-fast), background var(--transition-fast);
-}
-
-[data-theme='light'] #themeToggleButton {
-  background: linear-gradient(
-      135deg,
-      rgba(248, 250, 252, 0.96),
-      rgba(226, 232, 240, 0.94)
-    ),
-    linear-gradient(135deg, rgba(148, 163, 184, 0.35), transparent 60%);
-}
-
-#themeToggleButton:hover {
-  transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.6);
-}
-
-#themeToggleButton:active {
-  transform: translateY(0) scale(0.98);
-  box-shadow: var(--shadow-subtle);
-}
-
-#themeToggleIcon {
-  font-size: 16px;
-}
-
-#themeToggleText {
-  font-weight: 500;
-}
-
-/* Generic utility */
-
-#sectionTitle {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--text-soft);
-  margin-bottom: 16px;
-}
-
-#sectionHighlight {
-  color: var(--accent-strong);
-}
-
-/* Responsive helper */
-
-@media (max-width: 640px) {
-  #themeToggleButton {
-    top: 12px;
-    right: 12px;
-    padding: 5px 10px;
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
 }
