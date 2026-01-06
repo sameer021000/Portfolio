@@ -13,11 +13,11 @@ const MainScreen = ({ theme, toggleTheme }) => {
   }, []);
 
   const portfolioData = {
-    name: "Rahul Sharma",
-    email: "rahul.sharma@example.com",
-    phone: "+91 98765 43210",
-    linkedin: "https://linkedin.com/in/rahulsharma",
-    github: "https://github.com/rahulsharma",
+    name: "Sameer Shaik",
+    email: "sameer021000@gmail.com",
+    phone: "+91 6300728110",
+    linkedin: "https://linkedin.com/in/sameershaik021000/",
+    github: "https://github.com/sameer021000/",
     technicalSkills: [
       { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
       { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
@@ -39,28 +39,23 @@ const MainScreen = ({ theme, toggleTheme }) => {
     ],
     experience: [
       {
-        role: "Software Development Intern",
-        company: "TechNova Solutions",
-        description: "Developed and optimized RESTful APIs using Spring-Boot and managed complex database schemas in MySQL. Improved application performance by 25% through efficient coding practices. Collaborated with senior engineers on frontend integration.",
-        duration: "Jun 2023 - Aug 2023"
+        role: "Packaged App Development Associate",
+        company: "Accenture Solutions Private Limited",
+        description: "Received comprehensive training in the MERN stack (MongoDB, Express.js, React.js, Node.js). Worked in a project as support role, contributing to the development of small components. Gained hands-on experience in writing and optimizing code for real-world applications. Collaborated with the development team to enhance project functionality and performance.",
+        duration: "Nov 2024 - Feb 2025"
       },
-      {
-        role: "Web Intern",
-        company: "Digital Dreamers",
-        description: "Worked on responsive web designs using React.js and CSS. Translated UI/UX designs into functional components with high performance. Participated in daily stand-ups and code reviews.",
-        duration: "Jan 2023 - May 2023"
-      }
     ],
     projects: [
       {
-        name: "E-Commerce Platform",
-        liveUrl: "#",
-        githubUrl: "#",
-        tech: ["React.Js", "Node.Js", "MongoDB", "CSS"],
+        name: "Gold Artisan Web Application",
+        liveUrl: "https://goldartisan.vercel.app/",
+        githubUrl: "https://github.com/sameer021000/GoldArtisan",
+        tech: ["React.Js", "Node.Js", "MongoDB", "HTML", "CSS", "JavaScript"],
         description: [
-          "Implemented secure user authentication and payment gateway integration.",
-          "Designed responsive product catalog with advanced filtering.",
-          "Real-time order tracking and inventory management system."
+          "Built a full-stack web application to manage gold artisan onboarding and profile data digitally.",
+          "Developed a responsive React.js frontend with validations and smooth user flows.",
+          "Created a Node.js & Express.js backend with secure authentication and REST APIs.",
+          "Used MongoDB for scalable data storage and complete CRUD operations."
         ],
         image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1000&auto=format&fit=crop"
       },
@@ -81,46 +76,46 @@ const MainScreen = ({ theme, toggleTheme }) => {
       {
         level: "Graduation",
         qualification: "Bachelor Of Technology (B.Tech)",
-        institution: "SRM Institute of Science and Technology",
-        location: "Chennai, Tamil Nadu",
+        institution: "Vellore Institute of Technology",
+        location: "Amaravati, Andhra Pradesh",
         board: null,
-        knowledge: ["Java", "HTML", "CSS", "JavaScript", "React.Js"],
-        gpa: "8.5",
-        period: "Aug 2019 - May 2023"
+        knowledge: ["Java", "HTML", "CSS", "JavaScript", "PHP", "MySQL", "Python", "OOPs"],
+        gpa: "8.34",
+        period: "Aug 2020 - May 2024"
       },
       {
         level: "Intermediate",
         qualification: "12th",
-        institution: "Narayana Junior College",
+        institution: "Sri Chaitanya Junior College",
         location: "Vijayawada, Andhra Pradesh",
         board: "Board of Intermediate Education Andhra Pradesh",
         knowledge: ["Maths", "Physics", "Chemistry"],
-        gpa: "9.8",
+        gpa: "9.54",
         period: "Jun 2017 - Mar 2019"
       },
       {
         level: "School",
         qualification: "10th",
-        institution: "Ravindra Bharathi School",
-        location: "Guntur, Andhra Pradesh",
+        institution: "Geethanjali EM High School",
+        location: "Vijayawada, Andhra Pradesh",
         board: "Board of Secondary Education Andhra Pradesh",
         knowledge: ["Telugu", "Hindi", "English", "Maths", "Science", "Social"],
-        gpa: "9.5",
+        gpa: "9.0",
         period: "Jun 2016 - Apr 2017"
       }
     ],
     achievements: [
-      { title: "Hackathon Winner 2022", desc: "Secured 1st place in the National Level Smart India Hackathon for developing an innovative solution for waste management using IoT and Cloud technologies." },
-      { title: "Best Coder Award", desc: "Recognized as the 'Best Coder' in the annual college tech fest for solving complex algorithmic problems efficiently in Java." }
+      { title: "SIXTH SENSE 2024", desc: "Achieved 2nd place in SIXTH SENSE event organized by Innovators Quest club at VIT-AP University." },
     ],
     responsibilities: [
-      { title: "Technical Lead - Coding Club", desc: "Led a team of 50+ members, organized weekly coding contests, and conducted workshops on Web Development and Data Structures, impacting over 200 students." },
-      { title: "Event Coordinator", desc: "Managed logistics and scheduling for the annual technical symposium, coordinating with 10+ sponsors and ensuring smooth execution of 15+ events." }
+      { title: "Member of design team (VITOPIA)", desc: "Contributed my efforts in designing the tickets for fest in the VITAP" },
+      { title: "Member of managing team (VTAPP)", desc: "Ensure that all team members fulfilled their responsibilities efficiently" }
     ],
     certificates: [
-      { title: "AWS Certified Cloud Practitioner", desc: "Validated overall understanding of the AWS Cloud platform, including basic security and compliance aspects." },
-      { title: "Full Stack Web Development", desc: "Completed intensive bootcamp covering React, Node.js, Express, and MongoDB with hands-on projects." },
-      { title: "Java Programming Masterclass", desc: "Advanced concepts in Java including multithreading, collections framework, and database connectivity." }
+      { title: "Data Structures and Algorithms – Great Learning", desc: "Completed an intermediate-level course covering core DSA concepts in Java, strengthening problem-solving and algorithmic thinking." },
+      { title: "Android Application Development – Great Learning", desc: "Gained hands-on knowledge of Android app development, including activities, layouts, and basic app workflows." },
+      { title: "AWS Solution Architect Associate Training – byteXL", desc: "Completed a 60-hour training on AWS fundamentals, focusing on cloud architecture, core AWS services, and deployment concepts." },
+      { title: "Prompt Engineering Webinar – Innovators Quest Club, VIT-AP", desc: "Participated in a technical webinar on Prompt Engineering, exploring effective prompt design and real-world AI use cases." },
     ]
   };
 
@@ -129,7 +124,7 @@ const MainScreen = ({ theme, toggleTheme }) => {
       {/* Navigation */}
       <nav id="navbar" className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="nav-content">
-          <h2 className="logo" id="site-logo">Portfolio<span>.</span></h2>
+          <h2 className="logo" id="site-logo">Portfolio</h2>
           <ul className="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -293,7 +288,7 @@ const MainScreen = ({ theme, toggleTheme }) => {
 
       {/* Footer */}
       <footer className="footer" id="main-footer">
-        <p>© 2024 {portfolioData.name}. All rights reserved.</p>
+        <p>© 2025 {portfolioData.name}. All rights reserved.</p>
         <p>Built with ❤️ using React & Real DevIcons</p>
       </footer>
     </div>
