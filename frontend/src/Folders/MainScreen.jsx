@@ -4,22 +4,8 @@ import '../CSS/MainScreenCSS.css';
 const MainScreen = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-      setShowScrollTop(window.scrollY > 400);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
+  const [displayText, setDisplayText] = useState({ part1: "", part2: "" });
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
 
   const portfolioData = {
     name: "Sameer Shaik",
@@ -128,6 +114,44 @@ const MainScreen = ({ theme, toggleTheme }) => {
     ]
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+      setShowScrollTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll);
+    
+    // Typing Animation Logic
+    const fullTextPart1 = "Hi, I'm ";
+    const fullTextPart2 = portfolioData.name;
+    let charIndex = 0;
+    
+    const typingInterval = setInterval(() => {
+      if (charIndex <= fullTextPart1.length) {
+        setDisplayText(prev => ({ ...prev, part1: fullTextPart1.substring(0, charIndex) }));
+      } else if (charIndex <= fullTextPart1.length + fullTextPart2.length) {
+        const p2Index = charIndex - fullTextPart1.length;
+        setDisplayText(prev => ({ ...prev, part2: fullTextPart2.substring(0, p2Index) }));
+      } else {
+        clearInterval(typingInterval);
+        setIsTypingComplete(true);
+      }
+      charIndex++;
+    }, 75);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearInterval(typingInterval);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <div id="main-container" className="main-container">
       {/* Navigation */}
@@ -141,8 +165,26 @@ const MainScreen = ({ theme, toggleTheme }) => {
             <li><a href="#education">Education</a></li>
             <li><a href="#experience">Experience</a></li>
           </ul>
-          <button onClick={toggleTheme} className="theme-toggle" id="theme-btn">
-            {theme === 'light' ? '🌙' : '☀️'}
+          <button onClick={toggleTheme} className="theme-toggle" id="theme-btn" aria-label="Toggle theme">
+            <div className="theme-icon-wrapper">
+              {theme === 'light' ? (
+                <svg className="theme-icon moon-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+              ) : (
+                <svg className="theme-icon sun-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+              )}
+            </div>
           </button>
         </div>
       </nav>
@@ -151,7 +193,11 @@ const MainScreen = ({ theme, toggleTheme }) => {
       <section id="home" className="hero-section">
         <div className="hero-content">
           <div className="hero-text">
-            <h1 className="hero-title animate-up" id="full-name">Hi, I'm <span className="highlight">{portfolioData.name}</span></h1>
+            <h1 className="hero-title" id="full-name">
+              {displayText.part1}
+              <span className="highlight">{displayText.part2}</span>
+              {!isTypingComplete && <span className="typing-cursor">|</span>}
+            </h1>
             <p className="hero-subtitle animate-up delay-1">Full Stack Developer passionate about building scalable web applications and intuitive user experiences.</p>
             <div className="contact-info animate-up delay-2">
               <span className="contact-item" id="mail-id">📧 {portfolioData.email}</span>
