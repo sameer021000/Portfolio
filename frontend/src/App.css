@@ -64,3 +64,15 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-color);
 }
+
+/* Remove mobile tap highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent focus outline on tap (but keep keyboard focus safe) */
+button,
+div,
+a {
+  outline: none;
+}
