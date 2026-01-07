@@ -71,8 +71,16 @@ body {
 }
 
 /* Prevent focus outline on tap (but keep keyboard focus safe) */
-button,
-div,
-a {
+/* Remove focus outline for mouse/touch */
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible),
+div:focus:not(:focus-visible) {
   outline: none;
+}
+
+/* Keep focus for keyboard users */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 4px;
 }
