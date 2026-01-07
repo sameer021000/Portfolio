@@ -195,6 +195,11 @@ const MainScreen = ({ theme, toggleTheme }) => {
     })
   }
 
+  //Click to flip
+  const handleAvatarClick = () => {
+    setShowImage((prev) => !prev)
+  }
+
   return (
     <div id="main-container" className="main-container">
       <nav id="navbar" className={`navbar ${isScrolled ? "scrolled" : ""}`}>
@@ -344,7 +349,7 @@ const MainScreen = ({ theme, toggleTheme }) => {
               </a>
             </div>
           </div>
-          <div className={`hero-avatar-container animate-scale ${showImage ? "flipped" : ""}`}>
+          <div className={`hero-avatar-container animate-scale ${showImage ? "flipped" : ""}`} onClick={handleAvatarClick} style={{ cursor: "pointer" }}>
             <div className="avatar-glow"></div>
             <div className="flip-card">
               <div className="flip-card-inner">
