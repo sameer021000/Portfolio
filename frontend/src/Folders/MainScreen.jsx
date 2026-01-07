@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useEffect } from "react"
 import "../CSS/MainScreenCSS.css"
 import Lottie from "lottie-react"
@@ -196,6 +194,17 @@ const MainScreen = ({ theme, toggleTheme }) => {
     <div id="main-container" className="main-container">
       <nav id="navbar" className={`navbar ${isScrolled ? "scrolled" : ""}`}>
         <div className="nav-content">
+          <button
+            className="hamburger-menu"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+            id="hamburger-btn"
+          >
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+          </button>
+
           <h2 className="logo" id="site-logo">
             Portfolio
           </h2>
@@ -218,17 +227,6 @@ const MainScreen = ({ theme, toggleTheme }) => {
               <a href="#experience">Experience</a>
             </li>
           </ul>
-
-          <button
-            className="hamburger-menu"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle mobile menu"
-            id="hamburger-btn"
-          >
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-          </button>
 
           <button onClick={toggleTheme} className="theme-toggle" id="theme-btn" aria-label="Toggle theme">
             <div className="theme-icon-wrapper">

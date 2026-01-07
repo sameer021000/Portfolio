@@ -62,6 +62,8 @@
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  /* Updated to properly align hamburger before logo, with flex-start */
+  gap: 30px;
 }
 
 .logo {
@@ -101,8 +103,10 @@
   cursor: pointer;
   gap: 6px;
   padding: 8px;
-  margin-right: 12px;
+  /* Removed margin-right and updated positioning */
+  margin: 0;
   z-index: 1001;
+  order: -1;
 }
 
 .hamburger-line {
@@ -135,8 +139,9 @@
   position: fixed;
   left: -100%;
   top: 0;
-  width: 100%;
-  max-width: 280px;
+  /* Changed width from 100% to 75% of screen */
+  width: 75%;
+  max-width: 600px;
   height: 100vh;
   background: var(--card-bg);
   z-index: 999;
