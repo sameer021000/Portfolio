@@ -9,6 +9,7 @@ const MainScreen = ({ theme, toggleTheme }) => {
   const [displayText, setDisplayText] = useState({ part1: "", part2: "" })
   const [isTypingComplete, setIsTypingComplete] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [showImage, setShowImage] = useState(false)
 
   const portfolioData = {
     name: "Sameer Shaik",
@@ -152,7 +153,10 @@ const MainScreen = ({ theme, toggleTheme }) => {
     }
     window.addEventListener("scroll", handleScroll)
 
-    // Typing Animation Logic
+    const flipInterval = setInterval(() => {
+      setShowImage((prev) => !prev)
+    }, 5000)
+
     const fullTextPart1 = "Hi, I'm "
     const fullTextPart2 = portfolioData.name
     let charIndex = 0
@@ -172,6 +176,7 @@ const MainScreen = ({ theme, toggleTheme }) => {
     return () => {
       window.removeEventListener("scroll", handleScroll)
       clearInterval(typingInterval)
+      clearInterval(flipInterval)
     }
   }, [])
 
@@ -339,9 +344,18 @@ const MainScreen = ({ theme, toggleTheme }) => {
               </a>
             </div>
           </div>
-          <div className="hero-avatar-container animate-scale">
+          <div className={`hero-avatar-container animate-scale ${showImage ? "flipped" : ""}`}>
             <div className="avatar-glow"></div>
-            <Lottie animationData={devAnimation} loop className="hero-avatar" />
+            <div className="flip-card">
+              <div className="flip-card-inner">
+                <div className="flip-card-front">
+                  <Lottie animationData={devAnimation} loop className="hero-avatar" />
+                </div>
+                <div className="flip-card-back">
+                  <img src="/My_profile_pic.jpg" alt="Professional photo" className="hero-avatar" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
