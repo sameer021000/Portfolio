@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../CSS/MainScreenCSS.css';
+import Lottie from "lottie-react";
+import devAnimation from "../Assets/Male_Avatar.json";
 
 const MainScreen = ({ theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -214,7 +216,11 @@ const MainScreen = ({ theme, toggleTheme }) => {
           </div>
           <div className="hero-avatar-container animate-scale">
             <div className="avatar-glow"></div>
-            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sameer&hairColor=2c1b18&top=shortHair&facialHair=moustache&facialHairColor=2c1b18&accessories=prescription02&clothing=blazerAndShirt&mouth=smile" alt="Male Avatar" className="hero-avatar" id="user-avatar" />
+            <Lottie
+              animationData={devAnimation}
+              loop
+              className="hero-avatar"
+            />
           </div>
         </div>
       </section>
