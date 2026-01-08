@@ -11,6 +11,9 @@ const MainScreen = ({ theme, toggleTheme }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [showImage, setShowImage] = useState(false)
 
+  //Top Scroll bar
+  const [scrollProgress, setScrollProgress] = useState(0)
+
   const portfolioData = {
     name: "Sameer Shaik",
     email: "sameer021000@gmail.com",
@@ -150,6 +153,12 @@ const MainScreen = ({ theme, toggleTheme }) => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
       setShowScrollTop(window.scrollY > 400)
+
+      //Top Scroll bar
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      const progress = (scrollTop / docHeight) * 100
+      setScrollProgress(progress)
     }
     window.addEventListener("scroll", handleScroll)
 
@@ -202,6 +211,12 @@ const MainScreen = ({ theme, toggleTheme }) => {
 
   return (
     <div id="main-container" className="main-container">
+      <div className="scroll-progress-container">
+        <div
+          className="scroll-progress-bar"
+          style={{ width: `${scrollProgress}%` }}
+        ></div>
+      </div>
       <nav id="navbar" className={`navbar ${isScrolled ? "scrolled" : ""}`}>
         <div className="nav-content">
           <button
