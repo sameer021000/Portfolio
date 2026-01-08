@@ -883,6 +883,7 @@
     var(--gradient-start),
     var(--gradient-end)
   );
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
   transition: width 0.1s ease-out;
 }
 
