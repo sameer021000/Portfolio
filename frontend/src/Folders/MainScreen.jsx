@@ -382,6 +382,7 @@ const MainScreen = ({ theme, toggleTheme }) => {
             </div>
           </div>
           <div 
+            onClick={handleAvatarClick}
             className={`hero-avatar-container animate-scale ${ 
               pageLoaded ? "page-enter-avatar" : "page-enter-init"
             } ${showImage ? "flipped" : ""}`}
