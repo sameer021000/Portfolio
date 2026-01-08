@@ -387,7 +387,26 @@ const MainScreen = ({ theme, toggleTheme }) => {
         </h2>
         <div className="skills-grid" id="technical-skills-grid">
           {portfolioData.technicalSkills.map((skill) => (
-            <div className="skill-item-card card" key={skill.name}>
+            <div
+              className={`skill-item-card card ${
+                skill.name.includes("React")
+                  ? "skill-react"
+                  : skill.name.includes("Java") && !skill.name.includes("JavaScript")
+                  ? "skill-java"
+                  : skill.name.includes("JavaScript")
+                  ? "skill-js"
+                  : skill.name.includes("Git")
+                  ? "skill-git"
+                  : ["HTML", "CSS", "UI/UX", "XML"].includes(skill.name)
+                  ? "skill-ui"
+                  : ["Node.Js", "Spring-Boot"].includes(skill.name)
+                  ? "skill-backend"
+                  : ["MySQL", "MongoDB"].includes(skill.name)
+                  ? "skill-db"
+                  : ""
+              }`}
+              key={skill.name}
+            >
               <img src={skill.logo || "/placeholder.svg"} alt={skill.name} className="skill-logo" />
               <span className="skill-name">{skill.name}</span>
             </div>
