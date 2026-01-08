@@ -14,6 +14,9 @@ const MainScreen = ({ theme, toggleTheme }) => {
   //Top Scroll bar
   const [scrollProgress, setScrollProgress] = useState(0)
 
+  //Page entrance animation
+  const [pageLoaded, setPageLoaded] = useState(false)
+
   const portfolioData = {
     name: "Sameer Shaik",
     email: "sameer021000@gmail.com",
@@ -189,6 +192,15 @@ const MainScreen = ({ theme, toggleTheme }) => {
     }
   }, [])
 
+  //Page entrance animation
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPageLoaded(true)
+    }, 700)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   const handleNavClick = () => {
     setIsMobileMenuOpen(false)
   }
@@ -217,7 +229,12 @@ const MainScreen = ({ theme, toggleTheme }) => {
           style={{ width: `${scrollProgress}%` }}
         ></div>
       </div>
-      <nav id="navbar" className={`navbar ${isScrolled ? "scrolled" : ""}`}>
+      <nav
+        id="navbar"
+        className={`navbar ${pageLoaded ? "page-enter-nav" : "page-enter-init"} ${
+          isScrolled ? "scrolled" : ""
+        }`}
+      >
         <div className="nav-content">
           <button
             className="hamburger-menu"
@@ -334,7 +351,7 @@ const MainScreen = ({ theme, toggleTheme }) => {
       {/* Hero Section */}
       <section id="home" className="hero-section">
         <div className="hero-content">
-          <div className="hero-text">
+          <div className={`hero-text ${pageLoaded ? "page-enter-hero" : "page-enter-init"}`}>
             <h1 className="hero-title" id="full-name">
               {displayText.part1}
               <span className="highlight">{displayText.part2}</span>
@@ -364,7 +381,11 @@ const MainScreen = ({ theme, toggleTheme }) => {
               </a>
             </div>
           </div>
-          <div className={`hero-avatar-container animate-scale ${showImage ? "flipped" : ""}`} onClick={handleAvatarClick} style={{ cursor: "pointer" }}>
+          <div 
+            className={`hero-avatar-container animate-scale ${ 
+              pageLoaded ? "page-enter-avatar" : "page-enter-init"
+            } ${showImage ? "flipped" : ""}`}
+          >
             <div className="avatar-glow"></div>
             <div className="flip-card">
               <div className="flip-card-inner">

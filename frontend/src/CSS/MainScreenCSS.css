@@ -1,3 +1,63 @@
+/* ============================= */
+/* Page Load Entrance Animation */
+/* ============================= */
+
+.page-enter-init {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Navbar slide down */
+.page-enter-nav {
+  animation: navSlideDown 0.6s ease forwards;
+}
+
+@keyframes navSlideDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Hero text fade + slide */
+.page-enter-hero {
+  animation: heroFadeUp 0.7s ease forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes heroFadeUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Avatar scale-in */
+.page-enter-avatar {
+  animation: avatarScaleIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: 0.4s;
+}
+
+@keyframes avatarScaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* From here the main content starts */
 .main-container {
   padding-top: 80px;
 }
