@@ -17,6 +17,9 @@ const MainScreen = ({ theme, toggleTheme }) => {
   //Page entrance animation
   const [pageLoaded, setPageLoaded] = useState(false)
 
+  //Color theme switching from the theme icon button
+  const [themeWipe, setThemeWipe] = useState(null)
+
   const portfolioData = {
     name: "Sameer Shaik",
     email: "sameer021000@gmail.com",
@@ -223,6 +226,16 @@ const MainScreen = ({ theme, toggleTheme }) => {
 
   return (
     <div id="main-container" className="main-container">
+      {themeWipe && (
+        <div
+          className={`theme-wipe-overlay ${themeWipe.nextTheme}`}
+          style={{
+            "--wipe-x": `${themeWipe.x}px`,
+            "--wipe-y": `${themeWipe.y}px`,
+          }}
+        >
+        </div>
+      )}
       <div className="scroll-progress-container">
         <div
           className="scroll-progress-bar"
@@ -270,7 +283,22 @@ const MainScreen = ({ theme, toggleTheme }) => {
             </li>
           </ul>
 
-          <button onClick={toggleTheme} className="theme-toggle" id="theme-btn" aria-label="Toggle theme">
+          <button 
+            className="theme-toggle" id="theme-btn" 
+            aria-label="Toggle theme"
+            onClick={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect()
+              const x = rect.left + rect.width / 2
+              const y = rect.top + rect.height / 2
+              setThemeWipe({ x, y, nextTheme: theme === "light" ? "dark" : "light" })
+              setTimeout(() => {
+                toggleTheme()
+              }, 400)
+              setTimeout(() => {
+                setThemeWipe(null)
+              }, 900)
+            }}
+          >
             <div className="theme-icon-wrapper">
               {theme === "light" ? (
                 <svg

@@ -1026,6 +1026,38 @@
   }
 }
 
+/* ============================= */
+/* Dramatic Theme Wipe Transition */
+/* ============================= */
+
+.theme-wipe-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  pointer-events: none;
+  animation: wipeExpand 0.9s ease-in-out forwards;
+}
+
+/* Light theme wave */
+.theme-wipe-overlay.light {
+  background: #f8fafc;
+}
+
+/* Dark theme wave */
+.theme-wipe-overlay.dark {
+  background: #020617;
+}
+
+/* BIG dramatic expansion */
+@keyframes wipeExpand {
+  from {
+    clip-path: circle(0px at var(--wipe-x) var(--wipe-y));
+  }
+  to {
+    clip-path: circle(200vmax at var(--wipe-x) var(--wipe-y));
+  }
+}
+
 /* Animations */
 .animate-up {
   animation: slideUp 1s forwards ease-out;
