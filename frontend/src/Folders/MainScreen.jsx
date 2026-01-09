@@ -17,6 +17,9 @@ const MainScreen = ({ theme, toggleTheme }) => {
   //Page entrance animation
   const [pageLoaded, setPageLoaded] = useState(false)
 
+  //Cursor glow effect (Desktop)
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 })
+
   const portfolioData = {
     name: "Sameer Shaik",
     email: "sameer021000@gmail.com",
@@ -201,6 +204,21 @@ const MainScreen = ({ theme, toggleTheme }) => {
     return () => clearTimeout(timer)
   }, [])
 
+  //Cursor glow effect (Desktop)
+  useEffect(() => {
+    if (window.innerWidth <= 1024) return
+
+    const handleMouseMove = (e) => {
+      setCursorPos({ x: e.clientX, y: e.clientY })
+    }
+
+    window.addEventListener("mousemove", handleMouseMove)
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove)
+    }
+  }, [])
+
   const handleNavClick = () => {
     setIsMobileMenuOpen(false)
   }
@@ -223,6 +241,14 @@ const MainScreen = ({ theme, toggleTheme }) => {
 
   return (
     <div id="main-container" className="main-container">
+      <div
+        className="cursor-glow"
+        style={{
+          left: `${cursorPos.x}px`,
+          top: `${cursorPos.y}px`,
+        }}
+      >
+      </div>
       <div className="scroll-progress-container">
         <div
           className="scroll-progress-bar"
