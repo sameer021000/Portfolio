@@ -1049,7 +1049,7 @@
     transparent 70%
   );
   transform: translate(-50%, -50%);
-  transition: transform 0.08s ease-out;
+  transition: transform 0.05s ease-out;
 }
 
 /* Disable on small screens */
