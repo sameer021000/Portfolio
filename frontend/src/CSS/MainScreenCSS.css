@@ -1039,14 +1039,25 @@
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
-  background:
-    radial-gradient(circle,
-      rgba(99, 102, 241, 0.35),
-      rgba(99, 102, 241, 0.18),
-      transparent 60%
-    );
   transform: translate(-50%, -50%);
   transition: transform 0.05s ease-out;
+}
+[data-theme="light"] .cursor-glow {
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.5),
+    rgba(59, 130, 246, 0.28),
+    rgba(59, 130, 246, 0.15),
+    transparent 65%
+  );
+}
+[data-theme="dark"] .cursor-glow {
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.35),
+    rgba(99, 102, 241, 0.18),
+    transparent 60%
+  );
 }
 
 /* Disable on small screens */
