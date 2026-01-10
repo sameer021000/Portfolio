@@ -392,8 +392,6 @@
 #mail-id, #phone-number {
   text-decoration: none;
   color: inherit;
-  display: inline-flex;
-  align-items: center;
 }
 
 .social-links {
