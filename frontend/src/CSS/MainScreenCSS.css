@@ -429,7 +429,7 @@
 }
 
 /* Hover animation for Gmail box (same feel as social icons) */
-.contact-item:hover {
+.contact-item:hover:not(:active){
   background: var(--primary-color);
   color: white;
   transform: translateY(-5px);
