@@ -387,9 +387,9 @@ const MainScreen = ({ theme, toggleTheme }) => {
               Full Stack Developer passionate about building scalable web applications and intuitive user experiences.
             </p>
             <div className="contact-info animate-up delay-2">
-              <span className="contact-item" id="mail-id">
+              <a className="contact-item" id="mail-id" href={`mailto:${portfolioData.email}`}>
                 📧 {portfolioData.email}
-              </span>
+              </a>
               <span className="contact-item" id="phone-number">
                 📞 {portfolioData.phone}
               </span>
