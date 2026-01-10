@@ -390,9 +390,9 @@ const MainScreen = ({ theme, toggleTheme }) => {
               <a className="contact-item" id="mail-id" href={`mailto:${portfolioData.email}`}>
                 📧 {portfolioData.email}
               </a>
-              <span className="contact-item" id="phone-number">
+              <a className="contact-item" id="phone-number" href={`tel:${portfolioData.phone}`}>
                 📞 {portfolioData.phone}
-              </span>
+              </a>
             </div>
             <div className="social-links animate-up delay-3">
               <a href={portfolioData.linkedin} className="social-btn linkedin-btn" id="linkedin-link" title="LinkedIn">

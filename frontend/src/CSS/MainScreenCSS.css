@@ -389,7 +389,7 @@
 }
 
 /* Fix anchor styling for Gmail box */
-#mail-id {
+#mail-id, #phone-number {
   text-decoration: none;
   color: inherit;
   display: inline-flex;
