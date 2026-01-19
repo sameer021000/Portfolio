@@ -10,6 +10,7 @@ const MainScreen = ({ theme, toggleTheme }) => {
   const [isTypingComplete, setIsTypingComplete] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [showImage, setShowImage] = useState(false)
+  const name = portfolioData.name
 
   //Top Scroll bar
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -173,7 +174,7 @@ const MainScreen = ({ theme, toggleTheme }) => {
     }, 5000)
 
     const fullTextPart1 = "Hi, I'm "
-    const fullTextPart2 = portfolioData.name
+    const fullTextPart2 = name
     let charIndex = 0
     const typingInterval = setInterval(() => {
       if (charIndex <= fullTextPart1.length) {
@@ -193,7 +194,7 @@ const MainScreen = ({ theme, toggleTheme }) => {
       clearInterval(typingInterval)
       clearInterval(flipInterval)
     }
-  }, [])
+  }, [name])
 
   //Page entrance animation
   useEffect(() => {
@@ -420,7 +421,7 @@ const MainScreen = ({ theme, toggleTheme }) => {
                   <Lottie animationData={devAnimation} loop className="hero-avatar" />
                 </div>
                 <div className="flip-card-back">
-                  <img src="/My_profile_pic.jpg" alt="Professional photo" className="hero-avatar" />
+                  <img src="/My_profile_pic.jpg" alt="Sameer Shaik" className="hero-avatar" />
                 </div>
               </div>
             </div>
