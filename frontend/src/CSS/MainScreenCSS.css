@@ -1328,4 +1328,36 @@
   .split-section {
     padding: 50px 4%;
   }
+
+  .cert-grid.horizontal-scroll {
+    overflow-x: hidden;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 0;
+  }
+
+  .cert-card {
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .cert-icon-box {
+    width: 44px;
+    height: 44px;
+    font-size: 1.4rem;
+  }
+
+  .cert-content h4 {
+    font-size: 1rem;
+  }
+
+  .cert-content p {
+    font-size: 0.85rem;
+    max-width: 100%;
+  }
+
+  /* Disable hover lift on touch devices */
+  .cert-card:hover {
+    transform: none;
+  }
 }
