@@ -924,18 +924,20 @@
 
 .cert-card {
   display: flex;
-  gap: 20px;
+  gap: 18px;
   align-items: flex-start;
+  max-width: 490px;
+  padding: 22px;
 }
 
 .cert-icon-box {
-  width: 60px;
-  height: 60px;
-  border-radius: 18px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   flex-shrink: 0;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
@@ -960,6 +962,8 @@
 .cert-content p {
   font-size: 0.9rem;
   color: #64748b;
+  line-height: 1.6;
+  max-width: 420px;
 }
 
 /* Footer */
