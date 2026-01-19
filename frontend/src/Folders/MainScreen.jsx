@@ -10,7 +10,6 @@ const MainScreen = ({ theme, toggleTheme }) => {
   const [isTypingComplete, setIsTypingComplete] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [showImage, setShowImage] = useState(false)
-  const name = portfolioData.name
 
   //Top Scroll bar
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -156,6 +155,7 @@ const MainScreen = ({ theme, toggleTheme }) => {
     ],
   }
 
+  const name = portfolioData.name
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
