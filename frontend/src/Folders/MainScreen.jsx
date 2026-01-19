@@ -590,7 +590,7 @@ const MainScreen = ({ theme, toggleTheme }) => {
       {/* Certificates Section */}
       <section id="certificates" className="section certificates-section">
         <h2 className="section-title">Certifications</h2>
-        <div className="cert-grid" id="certificates-grid">
+        <div className="cert-grid horizontal-scroll" id="certificates-grid">
           {portfolioData.certificates.map((cert, i) => (
             <div className="cert-card card" key={i}>
               <div className={`cert-icon-box box-${i % 3}`}>📜</div>
