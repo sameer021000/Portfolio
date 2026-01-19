@@ -905,6 +905,8 @@
   display: flex;
   gap: 25px;
   overflow-x: auto;
+  overflow-y: visible;
+  padding-top: 12px;
   padding-bottom: 10px;
 
   /* important */
