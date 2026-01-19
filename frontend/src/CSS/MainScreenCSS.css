@@ -900,10 +900,26 @@
 }
 
 /* Certificates Grid */
-.cert-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+/* Certificates – Horizontal Scroll (uses GLOBAL scrollbar theme) */
+.cert-grid.horizontal-scroll {
+  display: flex;
   gap: 25px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+
+  /* important */
+  scrollbar-width: auto; /* Firefox → use global colors */
+}
+
+/* Each card width */
+.cert-grid.horizontal-scroll .cert-card {
+  min-width: 320px;
+  flex-shrink: 0;
+}
+
+/* ONLY define scrollbar size – colors come from App.css */
+.cert-grid.horizontal-scroll::-webkit-scrollbar {
+  height: 8px;
 }
 
 .cert-card {
