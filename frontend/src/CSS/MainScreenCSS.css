@@ -968,6 +968,14 @@
   max-width: 420px;
 }
 
+.cert-grid.horizontal-scroll {
+  scroll-behavior: smooth;
+}
+
+.cert-card {
+  scroll-snap-align: start;
+}
+
 /* Footer */
 .footer {
   text-align: center;
