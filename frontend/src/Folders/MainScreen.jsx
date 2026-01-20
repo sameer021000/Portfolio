@@ -227,27 +227,27 @@ const MainScreen = ({ theme, toggleTheme }) => {
   useEffect(() => {
     const container = document.getElementById("certificates-grid")
     if (!container) return
-    
+
     const cards = container.querySelectorAll(".cert-card")
     if (!cards.length) return
-    
+
     let currentIndex = 0
     let intervalId
-    
+
     const scrollToCard = () => {
       if (isCertHover) return
-    
+
       currentIndex = (currentIndex + 1) % cards.length
-    
+
       const targetCard = cards[currentIndex]
       container.scrollTo({
         left: targetCard.offsetLeft - 12, // small padding offset
         behavior: "smooth",
       })
     }
-  
-    intervalId = setInterval(scrollToCard, 3500) // 👈 card-by-card timing
-  
+
+    intervalId = setInterval(scrollToCard, 1500) // 👈 card-by-card timing
+
     return () => clearInterval(intervalId)
   }, [isCertHover])
 
