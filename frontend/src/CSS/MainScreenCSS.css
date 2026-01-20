@@ -1346,8 +1346,8 @@
   }
 
   .cert-card {
-    min-width: 280px;         /* ✅ smaller swipe cards */
-    max-width: 280px;
+    min-width: 260px;         /* ✅ smaller swipe cards */
+    max-width: 260px;
     padding: 14px;
   }
 
