@@ -919,6 +919,10 @@
   flex-shrink: 0;
 }
 
+.cert-grid.horizontal-scroll {
+  scroll-snap-type: x mandatory;
+}
+
 /* ONLY define scrollbar size – colors come from App.css */
 .cert-grid.horizontal-scroll::-webkit-scrollbar {
   height: 8px;
