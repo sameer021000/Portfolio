@@ -1348,7 +1348,7 @@
   .cert-card {
     min-width: 260px;         /* ✅ smaller swipe cards */
     max-width: 260px;
-    padding: 14px;
+    padding: 10px;
   }
 
   .cert-icon-box {
