@@ -20,6 +20,9 @@ const MainScreen = ({ theme, toggleTheme }) => {
   //Cursor glow effect (Desktop)
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 })
 
+  //Auto-Scroll
+  const [isCertHover, setIsCertHover] = useState(false)
+
   const portfolioData = {
     name: "Sameer Shaik",
     email: "sameer021000@gmail.com",
@@ -219,6 +222,34 @@ const MainScreen = ({ theme, toggleTheme }) => {
       window.removeEventListener("mousemove", handleMouseMove)
     }
   }, [])
+
+  //Auto-Scroll
+  useEffect(() => {
+    const container = document.getElementById("certificates-grid")
+    if (!container) return
+
+    let scrollSpeed = 0.9 // 👈 slow & smooth
+    let animationId
+
+    const autoScroll = () => {
+      if (!isCertHover) {
+        container.scrollLeft += scrollSpeed
+
+        // Reset scroll when reaching end
+        if (
+          container.scrollLeft + container.clientWidth >=
+          container.scrollWidth - 1
+        ) {
+          container.scrollLeft = 0
+        }
+      }
+      animationId = requestAnimationFrame(autoScroll)
+    }
+
+    animationId = requestAnimationFrame(autoScroll)
+
+    return () => cancelAnimationFrame(animationId)
+  }, [isCertHover])
 
   const handleNavClick = () => {
     setIsMobileMenuOpen(false)
@@ -591,7 +622,12 @@ const MainScreen = ({ theme, toggleTheme }) => {
       {/* Certificates Section */}
       <section id="certificates" className="section certificates-section">
         <h2 className="section-title">Certifications</h2>
-        <div className="cert-grid horizontal-scroll" id="certificates-grid">
+        <div className="cert-grid horizontal-scroll" id="certificates-grid"
+          onMouseEnter={() => setIsCertHover(true)}
+          onMouseLeave={() => setIsCertHover(false)}
+          onTouchStart={() => setIsCertHover(true)}
+          onTouchEnd={() => setIsCertHover(false)}
+        >
           {portfolioData.certificates.map((cert, i) => (
             <div className="cert-card card" key={i}>
               <div className={`cert-icon-box box-${i % 3}`}>📜</div>
