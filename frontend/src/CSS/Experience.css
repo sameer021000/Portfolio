@@ -1,0 +1,42 @@
+/* Experience Section */
+.experience-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.experience-card {
+    border-left: 6px solid var(--primary-color);
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.exp-role {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.exp-duration {
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.exp-company {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 18px;
+}
+
+.exp-desc {
+    line-height: 1.7;
+    color: #64748b;
+    font-size: 1rem;
+}

@@ -1,5 +1,5 @@
 import { portfolioData } from "../Data/PortfolioData"
-import "../CSS/MainScreenCSS.css"
+import "../CSS/Projects.css"
 
 const Projects = () => {
     return (

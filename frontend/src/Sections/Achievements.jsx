@@ -1,5 +1,5 @@
 import { portfolioData } from "../Data/PortfolioData"
-import "../CSS/MainScreenCSS.css"
+import "../CSS/Achievements.css"
 
 const Achievements = () => {
     return (

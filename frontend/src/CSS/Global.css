@@ -1,0 +1,298 @@
+/* ============================= */
+/* Global Styles & Utilities */
+/* ============================= */
+
+/* Page Load Entrance Animation */
+.page-enter-init {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.page-enter-nav {
+    animation: navSlideDown 0.6s ease forwards;
+}
+
+@keyframes navSlideDown {
+    from {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.page-enter-hero {
+    animation: heroFadeUp 0.7s ease forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes heroFadeUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.page-enter-avatar {
+    animation: avatarScaleIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    animation-delay: 0.4s;
+}
+
+@keyframes avatarScaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Layout */
+.main-container {
+    padding-top: 80px;
+}
+
+.section {
+    padding: 80px 10%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-align: center;
+    position: relative;
+}
+
+.highlight {
+    color: var(--primary-color);
+    background: linear-gradient(120deg, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Cards */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    word-wrap: break-word;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+/* Cursor Glow */
+.cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.05s ease-out;
+}
+
+[data-theme="light"] .cursor-glow {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.5), rgba(59, 130, 246, 0.28), rgba(59, 130, 246, 0.15), transparent 65%);
+}
+
+[data-theme="dark"] .cursor-glow {
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.35), rgba(99, 102, 241, 0.18), transparent 60%);
+}
+
+@media (max-width: 1024px) {
+    .cursor-glow {
+        display: none;
+    }
+}
+
+/* Shared Animations */
+.animate-up {
+    animation: slideUp 1s forwards ease-out;
+    opacity: 0;
+}
+
+.animate-scale {
+    animation: scaleIn 1s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+}
+
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.delay-3 {
+    animation-delay: 0.6s;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Scroll Progress */
+.scroll-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    z-index: 2000;
+    background: transparent;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+    transition: width 0.1s ease-out;
+}
+
+/* Scroll Top Button */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 0;
+    outline: none;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(30px) scale(0.5);
+    transition: opacity 0.5s, transform 0.5s, background 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.scroll-top-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    animation: bobbing 3s infinite ease-in-out;
+}
+
+.scroll-btn-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.scroll-top-btn:hover {
+    background: linear-gradient(135deg, var(--gradient-end), var(--gradient-start));
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2), 0 0 30px var(--primary-color);
+    transform: translateY(-5px) scale(1.1);
+}
+
+.scroll-top-btn:hover .scroll-btn-content {
+    transform: translateY(-4px);
+}
+
+.scroll-top-btn:active {
+    transform: scale(0.9) translateY(0);
+}
+
+@keyframes bobbing {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Responsive Global */
+@media (max-width: 768px) {
+    .section {
+        padding: 60px 6%;
+    }
+
+    .scroll-top-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .scroll-progress-container {
+        height: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        padding-top: 70px;
+    }
+
+    .section {
+        padding: 50px 4%;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .card:hover {
+        transform: none;
+        box-shadow: var(--shadow);
+    }
+}

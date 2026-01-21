@@ -1,5 +1,5 @@
 import { useState } from "react"
-import "../CSS/MainScreenCSS.css"
+import "../CSS/Navbar.css"
 
 const Navbar = ({ pageLoaded, isScrolled, theme, toggleTheme }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)

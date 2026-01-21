@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { portfolioData } from "../Data/PortfolioData"
-import "../CSS/MainScreenCSS.css"
+import "../CSS/Certificates.css"
 
 const Certificates = () => {
     const [isCertHover, setIsCertHover] = useState(false)

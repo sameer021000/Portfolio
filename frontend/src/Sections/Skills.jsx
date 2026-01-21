@@ -1,6 +1,5 @@
 import { portfolioData, skillCategories, categoryIcons } from "../Data/PortfolioData"
-import "../CSS/MainScreenCSS.css"
-import "../CSS/SkillCategories.css"
+import "../CSS/Skills.css"
 
 const Skills = () => {
     return (

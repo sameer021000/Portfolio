@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import Lottie from "lottie-react"
 import devAnimation from "../Assets/Male_Avatar.json"
 import { portfolioData } from "../Data/PortfolioData"
-import "../CSS/MainScreenCSS.css" // Keep visual consistency
+import "../CSS/Hero.css" // Keep visual consistency
 
 const Hero = ({ pageLoaded }) => {
     const [displayText, setDisplayText] = useState({ part1: "", part2: "" })

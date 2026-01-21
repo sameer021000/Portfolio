@@ -1,0 +1,127 @@
+/* Education Section */
+.education-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.education-timeline::before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    border-radius: 4px;
+}
+
+.edu-item {
+    display: flex;
+    gap: 40px;
+    position: relative;
+}
+
+.edu-dot {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: 5px solid var(--bg-color);
+    z-index: 2;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.edu-card {
+    flex: 1;
+}
+
+.edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.edu-qual {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.edu-level {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    color: var(--text-color);
+}
+
+.edu-period {
+    font-weight: 600;
+    font-size: 0.85rem;
+    background: var(--bg-color);
+    padding: 5px 15px;
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+}
+
+.edu-inst {
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.edu-loc {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 15px;
+}
+
+.edu-knowledge {
+    margin: 20px 0;
+}
+
+.knowledge-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.k-tag {
+    font-size: 0.85rem;
+    padding: 4px 14px;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.edu-gpa {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px dashed var(--border-color);
+}
+
+.gpa-score {
+    font-weight: 800;
+    color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    .edu-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .education-timeline::before {
+        left: 12px;
+    }
+
+    .edu-item {
+        gap: 24px;
+    }
+}

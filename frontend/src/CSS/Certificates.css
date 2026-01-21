@@ -1,0 +1,101 @@
+/* Certificates Section */
+.cert-grid.horizontal-scroll {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding-top: 12px;
+    padding-bottom: 10px;
+    scrollbar-width: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+.cert-grid.horizontal-scroll .cert-card {
+    min-width: 320px;
+    flex-shrink: 0;
+}
+
+.cert-grid.horizontal-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.cert-card {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    max-width: 490px;
+    padding: 22px;
+    scroll-snap-align: start;
+}
+
+.cert-icon-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.box-0 {
+    background: rgba(59, 130, 246, 0.15);
+}
+
+.box-1 {
+    background: rgba(16, 185, 129, 0.15);
+}
+
+.box-2 {
+    background: rgba(168, 85, 247, 0.15);
+}
+
+.cert-content h4 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.cert-content p {
+    font-size: 0.9rem;
+    color: #64748b;
+    line-height: 1.6;
+    max-width: 420px;
+}
+
+@media (max-width: 480px) {
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cert-grid.horizontal-scroll {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 2px;
+        padding-top: 8px;
+        padding-bottom: 14px;
+    }
+
+    .cert-card {
+        min-width: 260px;
+        max-width: 260px;
+        padding: 14px;
+    }
+
+    .cert-icon-box {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+    }
+
+    .cert-content h4 {
+        font-size: 0.95rem;
+    }
+
+    .cert-content p {
+        font-size: 0.82rem;
+        line-height: 1.5;
+    }
+}

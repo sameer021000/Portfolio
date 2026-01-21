@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
-import "../CSS/MainScreenCSS.css"
+import "../CSS/Global.css"
 import "../CSS/Animations.css"
-import "../CSS/SkillCategories.css"
 
 // Components & Sections
 import Navbar from "../Components/Navbar"

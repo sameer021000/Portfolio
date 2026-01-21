@@ -1,5 +1,5 @@
 import { portfolioData } from "../Data/PortfolioData"
-import "../CSS/MainScreenCSS.css"
+import "../CSS/Footer.css"
 
 const Footer = () => {
     return (
