@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
 import "../CSS/MainScreenCSS.css"
+import "../CSS/Animations.css"
+import "../CSS/SkillCategories.css"
 import Lottie from "lottie-react"
 import devAnimation from "../Assets/Male_Avatar.json"
 
@@ -158,7 +160,22 @@ const MainScreen = ({ theme, toggleTheme }) => {
     ],
   }
 
+  const skillCategories = {
+    "Frontend & Web Technologies": ["HTML", "CSS", "JavaScript", "React.Js", "UI/UX", "XML", "Web Development"],
+    "Backend & Languages": ["Java", "Python", "Node.Js", "Spring-Boot", "PHP"],
+    "Database Systems": ["MySQL", "MongoDB"],
+    "Mobile & Tools": ["Android Development", "Git", "GitHub"]
+  }
+
+  const categoryIcons = {
+    "Frontend & Web Technologies": "💻",
+    "Backend & Languages": "⚙️",
+    "Database Systems": "🗄️",
+    "Mobile & Tools": "🚀"
+  }
+
   const name = portfolioData.name
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
@@ -176,9 +193,20 @@ const MainScreen = ({ theme, toggleTheme }) => {
       setShowImage((prev) => !prev)
     }, 5000)
 
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      clearInterval(flipInterval)
+    }
+  }, [])
+
+  // Typing Effect (Delayed until page load)
+  useEffect(() => {
+    if (!pageLoaded) return
+
     const fullTextPart1 = "Hi, I'm "
-    const fullTextPart2 = name
+    const fullTextPart2 = name || "Sameer Shaik"
     let charIndex = 0
+
     const typingInterval = setInterval(() => {
       if (charIndex <= fullTextPart1.length) {
         setDisplayText((prev) => ({ ...prev, part1: fullTextPart1.substring(0, charIndex) }))
@@ -192,12 +220,8 @@ const MainScreen = ({ theme, toggleTheme }) => {
       charIndex++
     }, 75)
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-      clearInterval(typingInterval)
-      clearInterval(flipInterval)
-    }
-  }, [name])
+    return () => clearInterval(typingInterval)
+  }, [name, pageLoaded])
 
   //Page entrance animation
   useEffect(() => {
@@ -251,6 +275,28 @@ const MainScreen = ({ theme, toggleTheme }) => {
     return () => clearInterval(intervalId)
   }, [isCertHover])
 
+  // Scroll Animation Observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible")
+          }
+        })
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+      }
+    )
+
+    const elements = document.querySelectorAll(".scroll-animate")
+    elements.forEach((el) => observer.observe(el))
+
+    return () => elements.forEach((el) => observer.unobserve(el))
+  }, [])
+
   const handleNavClick = () => {
     setIsMobileMenuOpen(false)
   }
@@ -263,9 +309,9 @@ const MainScreen = ({ theme, toggleTheme }) => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
+      // ... (code omitted for brevity if duplicate, but I need to include full method to replace safely or just the constant)
     })
   }
-
   //Click to flip
   const handleAvatarClick = () => {
     setShowImage((prev) => !prev)
@@ -289,9 +335,8 @@ const MainScreen = ({ theme, toggleTheme }) => {
       </div>
       <nav
         id="navbar"
-        className={`navbar ${pageLoaded ? "page-enter-nav" : "page-enter-init"} ${
-          isScrolled ? "scrolled" : ""
-        }`}
+        className={`navbar ${pageLoaded ? "page-enter-nav" : "page-enter-init"} ${isScrolled ? "scrolled" : ""
+          }`}
       >
         <div className="nav-content">
           <button
@@ -439,11 +484,10 @@ const MainScreen = ({ theme, toggleTheme }) => {
               </a>
             </div>
           </div>
-          <div 
+          <div
             onClick={handleAvatarClick}
-            className={`hero-avatar-container animate-scale ${ 
-              pageLoaded ? "page-enter-avatar" : "page-enter-init"
-            } ${showImage ? "flipped" : ""}`}
+            className={`hero-avatar-container animate-scale ${pageLoaded ? "page-enter-avatar" : "page-enter-init"
+              } ${showImage ? "flipped" : ""}`}
           >
             <div className="avatar-glow"></div>
             <div className="flip-card">
@@ -462,33 +506,46 @@ const MainScreen = ({ theme, toggleTheme }) => {
 
       {/* Technical Skills Section */}
       <section id="skills" className="section skills-section">
-        <h2 className="section-title">
+        <h2 className="section-title scroll-animate">
           Technical <span className="highlight">Skills</span>
         </h2>
-        <div className="skills-grid" id="technical-skills-grid">
-          {portfolioData.technicalSkills.map((skill) => (
-            <div
-              className={`skill-item-card card ${
-                skill.name.includes("React")
-                  ? "skill-react"
-                  : skill.name.includes("Java") && !skill.name.includes("JavaScript")
-                  ? "skill-java"
-                  : skill.name.includes("JavaScript")
-                  ? "skill-js"
-                  : skill.name.includes("Git")
-                  ? "skill-git"
-                  : ["HTML", "CSS", "UI/UX", "XML"].includes(skill.name)
-                  ? "skill-ui"
-                  : ["Node.Js", "Spring-Boot"].includes(skill.name)
-                  ? "skill-backend"
-                  : ["MySQL", "MongoDB"].includes(skill.name)
-                  ? "skill-db"
-                  : ""
-              }`}
-              key={skill.name}
-            >
-              <img src={skill.logo || "/placeholder.svg"} alt={skill.name} className="skill-logo" />
-              <span className="skill-name">{skill.name}</span>
+
+        <div className="skills-categories-container">
+          {Object.entries(skillCategories).map(([category, skillNames], idx) => (
+            <div key={category} className={`skill-category-group scroll-animate delay-${(idx % 3) + 1}`}>
+              <h3 className="skill-category-title">
+                <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  {category} {categoryIcons[category]}
+                </span>
+              </h3>
+              <div className="skills-grid">
+                {portfolioData.technicalSkills
+                  .filter((skill) => skillNames.includes(skill.name))
+                  .map((skill) => (
+                    <div
+                      className={`skill-item-card card ${skill.name.includes("React")
+                        ? "skill-react"
+                        : skill.name.includes("Java") && !skill.name.includes("JavaScript")
+                          ? "skill-java"
+                          : skill.name.includes("JavaScript")
+                            ? "skill-js"
+                            : skill.name.includes("Git")
+                              ? "skill-git"
+                              : ["HTML", "CSS", "UI/UX", "XML"].includes(skill.name)
+                                ? "skill-ui"
+                                : ["Node.Js", "Spring-Boot"].includes(skill.name)
+                                  ? "skill-backend"
+                                  : ["MySQL", "MongoDB"].includes(skill.name)
+                                    ? "skill-db"
+                                    : ""
+                        }`}
+                      key={skill.name}
+                    >
+                      <img src={skill.logo || "/placeholder.svg"} alt={skill.name} className="skill-logo" />
+                      <span className="skill-name">{skill.name}</span>
+                    </div>
+                  ))}
+              </div>
             </div>
           ))}
         </div>
@@ -496,10 +553,10 @@ const MainScreen = ({ theme, toggleTheme }) => {
 
       {/* Projects Section */}
       <section id="projects" className="section projects-section">
-        <h2 className="section-title">
+        <h2 className="section-title scroll-animate">
           Featured <span className="highlight">Projects</span>
         </h2>
-        <div className="projects-grid" id="projects-container">
+        <div className="projects-grid scroll-animate" id="projects-container">
           {portfolioData.projects.map((project, index) => (
             <div className="project-card card" key={index} id={`project-${index}`}>
               <div className="project-image" style={{ backgroundImage: `url(${project.image})` }}>
@@ -534,10 +591,10 @@ const MainScreen = ({ theme, toggleTheme }) => {
 
       {/* Experience Section */}
       <section id="experience" className="section experience-section">
-        <h2 className="section-title">
+        <h2 className="section-title scroll-animate">
           Work <span className="highlight">Experience</span>
         </h2>
-        <div className="experience-container" id="experience-list">
+        <div className="experience-container scroll-animate" id="experience-list">
           {portfolioData.experience.map((exp, idx) => (
             <div className="experience-card card" key={idx}>
               <div className="exp-header">
@@ -553,10 +610,10 @@ const MainScreen = ({ theme, toggleTheme }) => {
 
       {/* Education Section */}
       <section id="education" className="section education-section">
-        <h2 className="section-title">
+        <h2 className="section-title scroll-animate">
           My <span className="highlight">Education</span>
         </h2>
-        <div className="education-timeline" id="education-timeline">
+        <div className="education-timeline scroll-animate" id="education-timeline">
           {portfolioData.education.map((edu, idx) => (
             <div className="edu-item" key={idx}>
               <div className="edu-dot"></div>
@@ -595,8 +652,8 @@ const MainScreen = ({ theme, toggleTheme }) => {
 
       {/* Achievements & Responsibilities */}
       <section className="section split-section">
-        <div className="achievements-col" id="achievements-section">
-          <h2 className="section-title">
+        <div className="achievements-col scroll-animate" id="achievements-section">
+          <h2 className="section-title scroll-animate">
             <span className="icon">🏆</span> Achievements
           </h2>
           {portfolioData.achievements.map((item, i) => (
@@ -606,8 +663,8 @@ const MainScreen = ({ theme, toggleTheme }) => {
             </div>
           ))}
         </div>
-        <div className="responsibility-col" id="responsibility-section">
-          <h2 className="section-title">
+        <div className="responsibility-col scroll-animate" id="responsibility-section">
+          <h2 className="section-title scroll-animate">
             <span className="icon">🤝</span> Responsibilities
           </h2>
           {portfolioData.responsibilities.map((item, i) => (
@@ -621,8 +678,8 @@ const MainScreen = ({ theme, toggleTheme }) => {
 
       {/* Certificates Section */}
       <section id="certificates" className="section certificates-section">
-        <h2 className="section-title">Certifications</h2>
-        <div className="cert-grid horizontal-scroll" id="certificates-grid"
+        <h2 className="section-title scroll-animate">Certifications</h2>
+        <div className="cert-grid horizontal-scroll scroll-animate" id="certificates-grid"
           onMouseEnter={() => setIsCertHover(true)}
           onMouseLeave={() => setIsCertHover(false)}
           onTouchStart={() => setIsCertHover(true)}
