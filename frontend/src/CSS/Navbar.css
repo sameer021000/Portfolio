@@ -46,12 +46,36 @@
     text-decoration: none;
     color: var(--text-color);
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     font-size: 0.95rem;
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+    border-radius: 2px;
 }
 
 .nav-links a:hover {
     color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:active {
+    transform: translateY(0) scale(0.95);
+    transition: transform 0.1s;
 }
 
 /* Theme Toggle */
