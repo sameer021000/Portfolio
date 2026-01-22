@@ -43,14 +43,28 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   overflow-x: hidden;
   cursor: default;
+  -webkit-user-select: none;
+  /* Safari */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
+  /* Standard */
 }
 
-a, button {
+a,
+button {
   cursor: pointer;
 }
 
-input, textarea {
+input,
+textarea {
   cursor: text;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
 .App {
@@ -58,8 +72,10 @@ input, textarea {
 }
 
 ::-webkit-scrollbar {
-  width: 8px; /* vertical scrollbar */
-  height: 8px;  /* horizontal scrollbar */
+  width: 8px;
+  /* vertical scrollbar */
+  height: 8px;
+  /* horizontal scrollbar */
 }
 
 ::-webkit-scrollbar-track {
