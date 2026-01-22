@@ -27,7 +27,14 @@
     line-height: 1.1;
     margin-bottom: 20px;
     word-break: break-word;
-    min-height: 1.2em;
+    min-height: 2.4em;
+    /* Increased to accommodate two lines */
+}
+
+.hero-greeting,
+.hero-name {
+    display: block;
+    margin: 0;
 }
 
 .typing-cursor {

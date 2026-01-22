@@ -19,7 +19,7 @@ const Hero = ({ pageLoaded }) => {
         return () => clearInterval(flipInterval)
     }, [])
 
-    // Typing Effect (Delayed until page load)
+    // Typing Effect
     useEffect(() => {
         if (!pageLoaded) return
 
@@ -52,9 +52,14 @@ const Hero = ({ pageLoaded }) => {
             <div className="hero-content">
                 <div className={`hero-text ${pageLoaded ? "page-enter-hero" : "page-enter-init"}`}>
                     <h1 className="hero-title" id="full-name">
-                        {displayText.part1}
-                        <span className="highlight">{displayText.part2}</span>
-                        {!isTypingComplete && <span className="typing-cursor">|</span>}
+                        <div className="hero-greeting">
+                            {displayText.part1}
+                            {!isTypingComplete && displayText.part2 === "" && <span className="typing-cursor">|</span>}
+                        </div>
+                        <div className="hero-name">
+                            <span className="highlight">{displayText.part2}</span>
+                            {!isTypingComplete && displayText.part2 !== "" && <span className="typing-cursor">|</span>}
+                        </div>
                     </h1>
                     <p className="hero-subtitle animate-up delay-1">
                         Full Stack Developer passionate about building scalable web applications and intuitive user experiences.
