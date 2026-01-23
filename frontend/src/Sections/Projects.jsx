@@ -1,4 +1,4 @@
-import { portfolioData } from "../data/portfolioData"
+import { portfolioData } from "../Data/PortfolioData"
 import "../CSS/Projects.css"
 import { ExternalLink, Github, Code2, CheckCircle2 } from "lucide-react"
 
