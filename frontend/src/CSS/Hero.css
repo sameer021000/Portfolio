@@ -109,28 +109,9 @@
 }
 
 .social-btn:hover {
-    transform: translateY(-5px);
+    background: var(--primary-color);
     color: white;
-}
-
-/* Brand Colors Matching Footer */
-.linkedin-btn:hover {
-    background: #0077b5;
-    border-color: #0077b5;
-    box-shadow: 0 4px 15px rgba(0, 119, 181, 0.4);
-}
-
-.github-btn:hover {
-    background: #333;
-    border-color: #333;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-[data-theme="dark"] .github-btn:hover {
-    background: #f0f6fc;
-    color: #0d1117;
-    border-color: white;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
 }
 
 .contact-item:active,

@@ -113,7 +113,6 @@
     gap: 16px;
 }
 
-
 .social-icon {
     width: 42px;
     height: 42px;
@@ -127,40 +126,19 @@
     border: 1px solid transparent;
 }
 
-/* Base Hover */
 .social-icon:hover {
-    transform: translateY(-4px);
+    background: var(--primary-color);
     color: white;
-}
-
-/* Brand Colors */
-.linkedin-icon:hover {
-    background: #0077b5;
-    box-shadow: 0 4px 12px rgba(0, 119, 181, 0.3);
-    border-color: #0077b5;
-}
-
-.github-icon:hover {
-    background: #333;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    border-color: #333;
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 [data-theme="dark"] .social-icon {
     background: rgba(255, 255, 255, 0.05);
-    color: var(--text-color);
 }
 
-[data-theme="dark"] .github-icon:hover {
-    background: #f0f6fc;
-    /* GitHub Dark Mode Hover is white-ish */
-    color: #0d1117;
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
-}
-
-[data-theme="dark"] .linkedin-icon:hover {
-    background: #0a66c2;
-    color: white;
+[data-theme="dark"] .social-icon:hover {
+    background: var(--primary-color);
 }
 
 .footer-bottom {
