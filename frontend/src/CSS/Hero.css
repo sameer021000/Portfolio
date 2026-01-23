@@ -121,7 +121,17 @@
 /* GitHub Specific Styles */
 .github-btn {
     color: var(--text-color);
-    /* Default text color */
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .github-btn {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Light Theme: Base GitHub Icon Visibility */
+[data-theme="light"] .github-btn {
+    background-color: #f0f0f0;
+    color: #333;
 }
 
 /* Light Theme: GitHub Hover -> Black text becomes White, Background becomes Black */
