@@ -1,4 +1,4 @@
-import { portfolioData } from "../data/portfolioData"
+import { portfolioData } from "../Data/PortfolioData"
 import "../CSS/Achievements.css"
 import { Trophy, Users, Award, Briefcase } from "lucide-react"
 
