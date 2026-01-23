@@ -126,19 +126,37 @@
     border: 1px solid transparent;
 }
 
-.social-icon:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-}
-
 [data-theme="dark"] .social-icon {
     background: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
 }
 
-[data-theme="dark"] .social-icon:hover {
-    background: var(--primary-color);
+/* LinkedIn Hover - Always Blue */
+.social-icon.linkedin-icon:hover {
+    background: #0077b5;
+    color: white;
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 119, 181, 0.3);
+    border-color: #0077b5;
+}
+
+/* GitHub Hover - Adaptive to Theme */
+/* Light Mode: Hover becomes Black bg, White icon */
+[data-theme="light"] .social-icon.github-icon:hover {
+    background: #000000;
+    color: white;
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    border-color: #000000;
+}
+
+/* Dark Mode: Hover becomes White bg, Black icon (High Visibility) */
+[data-theme="dark"] .social-icon.github-icon:hover {
+    background: #ffffff;
+    color: black;
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+    border-color: #ffffff;
 }
 
 .footer-bottom {

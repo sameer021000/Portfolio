@@ -89,6 +89,7 @@
     color: inherit;
 }
 
+/* Social & Contact Buttons */
 .social-links {
     display: flex;
     gap: 20px;
@@ -108,12 +109,40 @@
     box-shadow: var(--shadow);
 }
 
-.social-btn:hover {
-    background: var(--primary-color);
+/* LinkedIn Specific Styles */
+.linkedin-btn:hover {
+    background: #0077b5;
     color: white;
+    border-color: #0077b5;
     transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.4);
 }
 
+/* GitHub Specific Styles */
+.github-btn {
+    color: var(--text-color);
+    /* Default text color */
+}
+
+/* Light Theme: GitHub Hover -> Black text becomes White, Background becomes Black */
+[data-theme="light"] .github-btn:hover {
+    background: #000000;
+    color: white;
+    border-color: #000000;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Dark Theme: GitHub Hover -> White text becomes Black, Background becomes White (High Contrast) */
+[data-theme="dark"] .github-btn:hover {
+    background: #ffffff;
+    color: black;
+    border-color: #ffffff;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Contact Items */
 .contact-item:active,
 .social-btn:active {
     transform: scale(0.92);
