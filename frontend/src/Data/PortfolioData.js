@@ -55,17 +55,17 @@ export const portfolioData = {
             image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1000&auto=format&fit=crop",
         },
         {
-            name: "Task Management App",
+            name: "Tasbeeh Counter App",
             liveUrl: "#",
             githubUrl: "#",
-            tech: ["Java", "Spring-Boot", "MySQL"],
+            tech: ["Java", "XML", "SQLite"],
             description: null,
-            generalDescription: "A smart productivity tool that helps teams and individuals organize their daily work. It features automated reminders, easy task tracking, and team collaboration tools to boost efficiency.",
+            generalDescription: "A versatile digital counter application designed to modernize the traditional act of counting prayers or affirmations. It offers a seamless experience for tracking daily counts, setting personal targets with completion alerts, and reviewing past sessions, ensuring users can focus on their counting without losing track of their progress.",
             technicalDescription: [
-                "Engineered a robust backend using Java Spring Boot with Microservices architecture patterns.",
-                "Utilized MySQL for relational data management and Hibernate ORM for efficient database queries.",
-                "Implemented a scheduled job system for automated email notifications using JavaMailSender.",
-                "Secured REST endpoints using Spring Security and OAuth2 standards."
+                "Built a native Android application using Java and XML, emphasizing efficient state management and Android lifecycle handling.",
+                "Implemented persistent data storage using SQLite to archive counting history and SharedPreferences for retaining application state and user preferences.",
+                "Designed a dynamic UI/UX featuring a draggable floating button, custom animations, and a 'Tap Anywhere' accessibility mode for enhanced usability.",
+                "Engineered an asynchronous auto-counting algorithm using Android Handlers and Runnables, featuring variable speed control and logic to handle target completion events."
             ],
             image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=1000&auto=format&fit=crop",
         },
