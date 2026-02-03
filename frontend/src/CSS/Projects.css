@@ -1,340 +1,330 @@
-/* Projects Section - Sticky Stack Design */
-.projects-stack-container {
+/* Projects Section - Interactive Grid Design */
+.projects-section {
     position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 50px;
+    padding-bottom: 100px;
 }
 
-/* --- Base Sticky Card Styles (Desktop High-Res) --- */
-.sticky-card {
-    position: sticky;
-    top: calc(130px + (var(--index) * 30px));
-    /* CSS Variable-based override */
+/* --- Control Bar (Toggle) --- */
+.projects-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+    animation: fadeInDown 0.8s ease backwards;
+}
+
+.view-toggle {
+    display: flex;
     background: var(--card-bg);
+    padding: 6px;
+    border-radius: 50px;
     border: 1px solid var(--border-color);
-    border-radius: 24px;
-    overflow: hidden;
-    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.05), var(--shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-    /* Desktop Height */
-    height: 70vh;
-    min-height: 500px;
-    max-height: 700px;
-    display: flex;
-    flex-direction: column;
-}
-
-[data-theme="dark"] .sticky-card {
-    background: rgba(30, 41, 59, 0.95);
-    backdrop-filter: blur(10px);
-}
-
-.project-content-wrapper {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    height: 100%;
-    overflow: hidden;
-}
-
-/* Left: Visual Side */
-.project-visual {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     position: relative;
     overflow: hidden;
-    background: #0f172a;
-    border-right: 1px solid var(--border-color);
+}
+
+.toggle-btn {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 40px;
+    transition: color 0.3s ease;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.7;
+}
+
+.toggle-btn.active {
+    color: white;
+    opacity: 1;
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    bottom: 6px;
+    border-radius: 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color, #6366f1));
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1;
+    box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
+}
+
+/* --- Projects Grid --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* --- Project Card --- */
+.project-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
 }
 
-.project-image-container {
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1), var(--shadow);
+}
+
+[data-theme="dark"] .project-card:hover {
+    box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.3), var(--shadow);
+}
+
+/* Card Image */
+.card-image-wrapper {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.project-img {
     width: 100%;
     height: 100%;
-    background-size: cover;
-    background-position: center;
+    object-fit: cover;
     transition: transform 0.6s ease;
-    position: relative;
 }
 
-.sticky-card:hover .project-image-container {
-    transform: scale(1.05);
+.project-card:hover .project-img {
+    transform: scale(1.1);
 }
 
-/* Hover Overlay Actions */
-.project-overlay-actions {
+.card-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(4px);
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
     display: flex;
-    gap: 15px;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    padding: 20px;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-.project-visual:hover .project-overlay-actions {
+.project-card:hover .card-overlay {
     opacity: 1;
 }
 
-.action-btn {
+.card-links {
+    display: flex;
+    gap: 12px;
+}
+
+.card-link-btn {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    border-radius: 50px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: transform 0.2s ease, background 0.2s ease;
-    font-size: 0.95rem;
+    justify-content: center;
+    transition: all 0.2s ease;
 }
 
-.live-btn {
+.card-link-btn:hover {
     background: white;
-    color: #0f172a;
+    color: var(--primary-color);
+    transform: scale(1.1);
 }
 
-.live-btn:hover {
-    transform: scale(1.05);
-    background: #f1f5f9;
-}
-
-.github-btn {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(5px);
-}
-
-.github-btn:hover {
-    transform: scale(1.05);
-    background: rgba(255, 255, 255, 0.2);
-}
-
-/* Right: Details Side */
-.project-details {
-    padding: 40px;
+/* Card Content */
+.card-content {
+    padding: 25px;
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
-    height: 100%;
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) transparent;
+    flex-grow: 1;
 }
 
-/* Desktop Scrollbar */
-.project-details::-webkit-scrollbar {
-    width: 6px;
-}
-
-.project-details::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.project-details::-webkit-scrollbar-thumb {
-    background-color: var(--border-color);
-    border-radius: 10px;
-}
-
-.project-details::-webkit-scrollbar-thumb:hover {
-    background-color: var(--primary-color);
-}
-
-.project-header {
-    margin-bottom: 20px;
-    flex-shrink: 0;
-}
-
-.project-title {
-    font-size: 2rem;
-    font-weight: 800;
+.card-header {
     margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
     background: linear-gradient(120deg, var(--text-color), var(--primary-color));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.tech-stack-row {
+.tech-stack-mini {
     display: flex;
-    align-items: flex-start;
-    gap: 12px;
-}
-
-.tech-icon {
-    color: var(--primary-color);
-    margin-top: 6px;
-    flex-shrink: 0;
-}
-
-.tech-tags {
-    display: flex;
-    flex-wrap: wrap;
     gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 
-.tech-pill {
-    font-size: 0.8rem;
-    padding: 6px 14px;
-    background: rgba(59, 130, 246, 0.08);
+.tech-dot {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    background: rgba(59, 130, 246, 0.1);
     color: var(--primary-color);
-    border: 1px solid rgba(59, 130, 246, 0.2);
-    border-radius: 8px;
+    border-radius: 6px;
     font-weight: 600;
 }
 
-.project-features {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+/* Description Switch Animation */
+.description-container {
+    position: relative;
     flex-grow: 1;
+    perspective: 1000px;
 }
 
-.project-features li {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
+.desc-content {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* General Mode Styling */
+.general-desc p {
     font-size: 1rem;
-    color: #64748b;
     line-height: 1.6;
+    color: #64748b;
+    margin: 0;
 }
 
-[data-theme="dark"] .project-features li {
+[data-theme="dark"] .general-desc p {
     color: #94a3b8;
 }
 
-.feature-icon {
-    color: var(--secondary-color);
-    flex-shrink: 0;
-    margin-top: 4px;
+.highlight-text {
+    color: var(--primary-color);
+    font-weight: 500;
 }
 
-.mobile-actions {
+/* Technical Mode Styling */
+.technical-desc {
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="light"] .technical-desc {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tech-item {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    color: #38bdf8;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+[data-theme="light"] .tech-item {
+    color: #0f172a;
+}
+
+.code-symbol {
+    color: var(--secondary-color, #ec4899);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Mobile Actions (Always visible on mobile below card) */
+.mobile-card-actions {
     display: none;
-    margin-top: 30px;
-    gap: 15px;
-    flex-shrink: 0;
+    margin-top: 20px;
+    gap: 10px;
 }
 
-/* --- Responsive & Tablet Tweaks (1024px - 768px) --- */
-@media (max-width: 1024px) {
-    .project-details {
-        padding: 30px;
-    }
-
-    .project-visual {
-        /* Keep side-by-side on tablet but smaller image */
-        border-right: 1px solid var(--border-color);
-    }
+.m-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
 }
 
-/* --- Mobile Sticky Stack (< 900px) --- */
-@media (max-width: 900px) {
-    .projects-stack-container {
-        /* Reduce gap since we are stacking vertically inside the card */
-        gap: 0;
-    }
+.m-btn.primary {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+}
 
-    .sticky-card {
-        /* Use a smaller top offset for mobile to save screen space */
-        top: calc(90px + (var(--index) * 20px));
-        height: 80vh;
-        /* Taller on mobile relative to viewport */
-        min-height: auto;
-        max-height: 80vh;
-    }
-
-    .project-content-wrapper {
+/* Responsive */
+@media (max-width: 768px) {
+    .projects-grid {
         grid-template-columns: 1fr;
-        grid-template-rows: 35% 1fr;
-        /* Image takes top 35%, details take rest */
-        display: grid;
-        /* Keep grid for strict height control */
+        gap: 30px;
     }
 
-    .project-visual {
-        height: 100%;
-        /* Fill the grid row */
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
+    .card-image-wrapper {
+        height: 200px;
     }
 
-    .project-details {
-        padding: 24px;
-        height: 100%;
-        /* Fill the grid row */
-        overflow-y: auto;
-        /* Enable scroll for details part only */
-    }
-
-    .project-title {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-    }
-
-    .project-header {
-        margin-bottom: 15px;
-    }
-
-    /* Actions */
-    .project-overlay-actions {
+    .card-overlay {
         display: none;
+        /* Hide hover overlay on mobile */
     }
 
-    .mobile-actions {
+    .mobile-card-actions {
         display: flex;
-        margin-top: 20px;
-        padding-bottom: 10px;
-        /* Space for scrolling */
     }
 
-    .mobile-btn {
+    .view-toggle {
+        width: 100%;
+        max-width: 300px;
+        justify-content: space-between;
+    }
+
+    .toggle-btn {
         flex: 1;
-        display: flex;
-        align-items: center;
         justify-content: center;
-        gap: 8px;
-        padding: 14px;
-        border-radius: 12px;
-        font-weight: 600;
-        text-decoration: none;
-        font-size: 1rem;
-    }
-
-    .mobile-btn:nth-child(1) {
-        background: var(--primary-color);
-        color: white;
-    }
-
-    .mobile-btn:nth-child(2) {
-        background: transparent;
-        border: 1px solid var(--border-color);
-        color: var(--text-color);
-    }
-}
-
-/* --- Small Mobile (< 480px) --- */
-@media (max-width: 480px) {
-    .sticky-card {
-        top: calc(80px + (var(--index) * 15px));
-        height: 85vh;
-        /* Maximize height on small phones */
-        max-height: 85vh;
-        border-radius: 16px;
-    }
-
-    .project-content-wrapper {
-        grid-template-rows: 25% 1fr;
-        /* Smaller image on tiny screens */
-    }
-
-    .project-details {
-        padding: 20px;
+        padding: 10px;
+        font-size: 0.9rem;
     }
 }
