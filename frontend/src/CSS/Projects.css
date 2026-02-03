@@ -1,330 +1,325 @@
-/* Projects Section - Interactive Grid Design */
+/* Projects Section - Tabbed Card Design */
 .projects-section {
-    position: relative;
     padding-bottom: 100px;
 }
 
-/* --- Control Bar (Toggle) --- */
-.projects-controls {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 60px;
-    animation: fadeInDown 0.8s ease backwards;
-}
-
-.view-toggle {
-    display: flex;
-    background: var(--card-bg);
-    padding: 6px;
-    border-radius: 50px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    position: relative;
-    overflow: hidden;
-}
-
-.toggle-btn {
-    position: relative;
-    border: none;
-    background: transparent;
-    padding: 12px 30px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-color);
-    cursor: pointer;
-    border-radius: 40px;
-    transition: color 0.3s ease;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    opacity: 0.7;
-}
-
-.toggle-btn.active {
-    color: white;
-    opacity: 1;
-}
-
-.toggle-slider {
-    position: absolute;
-    top: 6px;
-    left: 6px;
-    bottom: 6px;
-    border-radius: 40px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color, #6366f1));
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 1;
-    box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
-}
-
-/* --- Projects Grid --- */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
-    max-width: 1400px;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 50px;
+    max-width: 1300px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* --- Project Card --- */
+/* --- Project Card Container --- */
 .project-card {
     background: var(--card-bg);
     border-radius: 20px;
     border: 1px solid var(--border-color);
-    overflow: hidden;
-    position: relative;
+    box-shadow: var(--shadow);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: 100%;
+    position: relative;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1), var(--shadow);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"] .project-card:hover {
-    box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.3), var(--shadow);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Card Image */
-.card-image-wrapper {
+/* --- Image Header --- */
+.card-image-container {
+    height: 220px;
     position: relative;
-    height: 240px;
     overflow: hidden;
-    flex-shrink: 0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .project-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.5s ease;
 }
 
 .project-card:hover .project-img {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
-.card-overlay {
+.card-actions-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
     display: flex;
-    align-items: flex-end;
-    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-.project-card:hover .card-overlay {
+.project-card:hover .card-actions-overlay {
     opacity: 1;
 }
 
-.card-links {
-    display: flex;
-    gap: 12px;
-}
-
-.card-link-btn {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(4px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    width: 40px;
-    height: 40px;
+.action-icon-btn {
+    width: 45px;
+    height: 45px;
+    background: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
+    color: #0f172a;
+    transition: transform 0.2s, background 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.card-link-btn:hover {
-    background: white;
-    color: var(--primary-color);
+.action-icon-btn:hover {
+    background: var(--primary-color);
+    color: white;
     transform: scale(1.1);
 }
 
-/* Card Content */
-.card-content {
-    padding: 25px;
+/* --- Card Body --- */
+.card-body {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
 }
 
-.card-header {
-    margin-bottom: 15px;
+/* --- Tabs Header --- */
+.card-tabs {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.02);
 }
 
-.card-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 0;
-    background: linear-gradient(120deg, var(--text-color), var(--primary-color));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.tech-stack-mini {
+.tab-btn {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    background: transparent;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+    opacity: 0.6;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 8px;
-    flex-wrap: wrap;
+}
+
+.tab-btn:hover {
+    background: rgba(0, 0, 0, 0.03);
+    opacity: 0.9;
+}
+
+.tab-btn.active {
+    opacity: 1;
+    color: var(--primary-color);
+    background: var(--card-bg);
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+}
+
+/* --- Content Switcher --- */
+.card-content-area {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 250px;
+    /* Consistent height */
+}
+
+.project-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-color);
+}
+
+/* Overview Mode Styling */
+.overview-content {
+    animation: fadeIn 0.4s ease;
+}
+
+.overview-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.85;
     margin-bottom: 20px;
 }
 
-.tech-dot {
-    font-size: 0.75rem;
+.tech-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.tech-tag {
+    font-size: 0.8rem;
     padding: 4px 10px;
     background: rgba(59, 130, 246, 0.1);
     color: var(--primary-color);
     border-radius: 6px;
-    font-weight: 600;
-}
-
-/* Description Switch Animation */
-.description-container {
-    position: relative;
-    flex-grow: 1;
-    perspective: 1000px;
-}
-
-.desc-content {
-    animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(5px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* General Mode Styling */
-.general-desc p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #64748b;
-    margin: 0;
-}
-
-[data-theme="dark"] .general-desc p {
-    color: #94a3b8;
-}
-
-.highlight-text {
-    color: var(--primary-color);
     font-weight: 500;
 }
 
-/* Technical Mode Styling */
-.technical-desc {
-    background: #1e293b;
-    padding: 15px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-[data-theme="light"] .technical-desc {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-}
-
-.tech-list {
-    list-style: none;
+/* Tech Specs Mode Styling (Terminal Style) */
+.specs-content {
+    animation: fadeIn 0.4s ease;
+    background: #1e1e1e;
+    border-radius: 8px;
     padding: 0;
-    margin: 0;
+    overflow: hidden;
+    flex: 1;
+    border: 1px solid #333;
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 
-.tech-item {
-    font-family: 'Fira Code', monospace;
-    font-size: 0.85rem;
-    color: #38bdf8;
+.terminal-header {
+    background: #2d2d2d;
+    padding: 8px 12px;
     display: flex;
-    gap: 10px;
-    align-items: flex-start;
+    gap: 6px;
+    border-bottom: 1px solid #333;
 }
 
-[data-theme="light"] .tech-item {
-    color: #0f172a;
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
 }
 
-.code-symbol {
-    color: var(--secondary-color, #ec4899);
-    flex-shrink: 0;
-    margin-top: 2px;
+.red {
+    background: #ff5f56;
 }
 
-/* Mobile Actions (Always visible on mobile below card) */
-.mobile-card-actions {
+.yellow {
+    background: #ffbd2e;
+}
+
+.green {
+    background: #27c93f;
+}
+
+.terminal-body {
+    padding: 15px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.85rem;
+    color: #d4d4d4;
+    overflow-y: auto;
+}
+
+.code-line {
+    display: block;
+    margin-bottom: 8px;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 15px;
+}
+
+.code-line::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.keyword {
+    color: #569cd6;
+}
+
+/* VS Code Blue */
+.string {
+    color: #ce9178;
+}
+
+/* VS Code Orange */
+.comment {
+    color: #6a9955;
+}
+
+/* VS Code Green */
+
+/* Mobile Only Footer */
+.mobile-footer {
     display: none;
-    margin-top: 20px;
+    padding: 15px;
+    border-top: 1px solid var(--border-color);
     gap: 10px;
-}
-
-.m-btn {
-    flex: 1;
-    padding: 10px;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-decoration: none;
-    border: 1px solid var(--border-color);
-    color: var(--text-color);
-}
-
-.m-btn.primary {
-    background: var(--primary-color);
-    color: white;
-    border: none;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
     .projects-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        padding: 0 15px;
     }
 
-    .card-image-wrapper {
-        height: 200px;
-    }
-
-    .card-overlay {
+    .card-actions-overlay {
         display: none;
-        /* Hide hover overlay on mobile */
     }
 
-    .mobile-card-actions {
+    .mobile-footer {
         display: flex;
     }
 
-    .view-toggle {
-        width: 100%;
-        max-width: 300px;
-        justify-content: space-between;
+    .m-link {
+        flex: 1;
+        padding: 10px;
+        text-align: center;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
     }
 
-    .toggle-btn {
-        flex: 1;
-        justify-content: center;
-        padding: 10px;
-        font-size: 0.9rem;
+    .m-link.live {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .m-link.git {
+        border: 1px solid var(--border-color);
+        color: var(--text-color);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

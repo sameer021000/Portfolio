@@ -69,6 +69,21 @@ export const portfolioData = {
             ],
             image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=1000&auto=format&fit=crop",
         },
+        {
+            name: "ShopMax E-Commerce",
+            liveUrl: "#",
+            githubUrl: "#",
+            tech: ["React.Js", "Redux", "Firebase", "Stripe"],
+            description: null,
+            generalDescription: "A modern online shopping platform featuring a seamless checkout experience. Users can browse products, add them to a wishlist, and purchase securely using integrated payment gateways.",
+            technicalDescription: [
+                "Implemented Redux Toolkit for efficient global state management of the shopping cart.",
+                "Integrated Stripe API for secure and PCI-compliant payment processing.",
+                "Used Firebase Authentication and Cloud Firestore for real-time user data sync.",
+                "Optimized rendering performance using React.memo and code-splitting."
+            ],
+            image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=1000&auto=format&fit=crop",
+        },
     ],
     education: [
         {
