@@ -44,11 +44,13 @@ export const portfolioData = {
             liveUrl: "https://goldartisan.vercel.app/",
             githubUrl: "https://github.com/sameer021000/GoldArtisan",
             tech: ["React.Js", "Node.Js", "MongoDB", "HTML", "CSS", "JavaScript"],
-            description: [
-                "Built a full-stack web application to manage gold artisan onboarding and profile data digitally.",
-                "Developed a responsive React.js frontend with validations and smooth user flows.",
-                "Created a Node.js & Express.js backend with secure authentication and REST APIs.",
-                "Used MongoDB for scalable data storage and complete CRUD operations.",
+            description: null,
+            generalDescription: "A user-friendly digital platform designed to help gold artisans streamline their work. It provides an easy way to register, manage profiles, and connect with potential clients, modernizing the traditional artisan trade.",
+            technicalDescription: [
+                "Built a full-stack web application using the MERN stack (MongoDB, Express, React, Node) architecture.",
+                "Implemented secure JWT authentication and role-based access control for artisans and admins.",
+                "Designed a responsive UI with React.js, utilizing Hooks and Context API for state management.",
+                "Deployed backend on Render and frontend on Vercel with CI/CD integration."
             ],
             image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1000&auto=format&fit=crop",
         },
@@ -57,10 +59,13 @@ export const portfolioData = {
             liveUrl: "#",
             githubUrl: "#",
             tech: ["Java", "Spring-Boot", "MySQL"],
-            description: [
-                "Built RESTful APIs for task CRUD operations.",
-                "Implemented role-based access control for teams.",
-                "Notification system for upcoming deadlines and task updates.",
+            description: null,
+            generalDescription: "A smart productivity tool that helps teams and individuals organize their daily work. It features automated reminders, easy task tracking, and team collaboration tools to boost efficiency.",
+            technicalDescription: [
+                "Engineered a robust backend using Java Spring Boot with Microservices architecture patterns.",
+                "Utilized MySQL for relational data management and Hibernate ORM for efficient database queries.",
+                "Implemented a scheduled job system for automated email notifications using JavaMailSender.",
+                "Secured REST endpoints using Spring Security and OAuth2 standards."
             ],
             image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=1000&auto=format&fit=crop",
         },
