@@ -1,71 +1,116 @@
 import { portfolioData } from "../Data/PortfolioData"
 import "../CSS/Projects.css"
-import { ExternalLink, Github, Code2, CheckCircle2 } from "lucide-react"
+import { ExternalLink, Github, Code2, Users, Terminal, ChevronRight } from "lucide-react"
 
 const Projects = () => {
+    const [viewMode, setViewMode] = useState("general") // 'general' or 'technical'
+
+    // Fallback descriptions if data is missing
+    const defaultGeneral = "This project is designed with the end-user in mind, focusing on intuitive navigation and seamless performance. It solves real-world problems by automating tasks and providing key insights in a user-friendly interface."
+
+    const defaultTechnical = [
+        "Built using modern component-based architecture for reusability.",
+        "Implemented secure RESTful API endpoints for data handling.",
+        "Optimized for performance with lazy loading and code splitting.",
+        "Utilized CI/CD pipelines for automated testing and deployment."
+    ]
+
     return (
         <section id="projects" className="section projects-section">
             <h2 className="section-title scroll-animate">
                 Featured <span className="highlight">Projects</span>
             </h2>
-            <div className="projects-stack-container" id="projects-container">
+
+            {/* Toggle Control */}
+            <div className="projects-controls scroll-animate delay-1">
+                <div className="view-toggle">
+                    <div
+                        className="toggle-slider"
+                        style={{
+                            transform: viewMode === "general" ? "translateX(0)" : "translateX(100%)",
+                            width: "50%"
+                        }}
+                    />
+                    <button
+                        className={`toggle-btn ${viewMode === "general" ? "active" : ""}`}
+                        onClick={() => setViewMode("general")}
+                    >
+                        <Users size={18} /> General
+                    </button>
+                    <button
+                        className={`toggle-btn ${viewMode === "technical" ? "active" : ""}`}
+                        onClick={() => setViewMode("technical")}
+                    >
+                        <Terminal size={18} /> Technical
+                    </button>
+                </div>
+            </div>
+
+            {/* Projects Grid */}
+            <div className="projects-grid">
                 {portfolioData.projects.map((project, index) => (
                     <div
-                        className="project-card-stack sticky-card scroll-animate"
+                        className="project-card scroll-animate"
                         key={index}
-                        style={{
-                            '--index': index
-                        }}
+                        style={{ animationDelay: `${index * 0.1 + 0.2}s` }}
                     >
-                        <div className="project-content-wrapper">
-                            {/* Left: Project Preview */}
-                            <div className="project-visual">
-                                <div
-                                    className="project-image-container"
-                                    style={{ backgroundImage: `url(${project.image})` }}
-                                >
-                                    <div className="project-overlay-actions">
-                                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="action-btn live-btn">
-                                            <ExternalLink size={18} /> Live Demo
-                                        </a>
-                                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="action-btn github-btn">
-                                            <Github size={18} /> Code
-                                        </a>
-                                    </div>
+                        {/* Image Header */}
+                        <div className="card-image-wrapper">
+                            <img src={project.image} alt={project.name} className="project-img" />
+                            <div className="card-overlay">
+                                <div className="card-links">
+                                    <a href={project.liveUrl} target="_blank" rel="noreferrer" className="card-link-btn" title="Live Demo">
+                                        <ExternalLink size={20} />
+                                    </a>
+                                    <a href={project.githubUrl} target="_blank" rel="noreferrer" className="card-link-btn" title="View Code">
+                                        <Github size={20} />
+                                    </a>
                                 </div>
                             </div>
+                        </div>
 
-                            {/* Right: Project Info */}
-                            <div className="project-details">
-                                <div className="project-header">
-                                    <h3 className="project-title">{project.name}</h3>
-                                    <div className="tech-stack-row">
-                                        <Code2 size={16} className="tech-icon" />
-                                        <div className="tech-tags">
-                                            {project.tech.map((t) => (
-                                                <span key={t} className="tech-pill">{t}</span>
-                                            ))}
-                                        </div>
+                        {/* Card Content */}
+                        <div className="card-content">
+                            <div className="card-header">
+                                <h3 className="card-title">{project.name}</h3>
+                            </div>
+
+                            <div className="tech-stack-mini">
+                                {project.tech.slice(0, 4).map((t, i) => (
+                                    <span key={i} className="tech-dot">{t}</span>
+                                ))}
+                                {project.tech.length > 4 && <span className="tech-dot">+{project.tech.length - 4}</span>}
+                            </div>
+
+                            <div className="description-container">
+                                {viewMode === "general" ? (
+                                    <div className="desc-content general-desc">
+                                        <p>
+                                            {project.generalDescription || defaultGeneral}
+                                        </p>
                                     </div>
-                                </div>
+                                ) : (
+                                    <div className="desc-content technical-desc">
+                                        <ul className="tech-list">
+                                            {(project.technicalDescription || defaultTechnical).map((point, idx) => (
+                                                <li key={idx} className="tech-item">
+                                                    <ChevronRight size={14} className="code-symbol" />
+                                                    <span>{point}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
+                            </div>
 
-                                <ul className="project-features">
-                                    {project.description.map((point, i) => (
-                                        <li key={i}>
-                                            <CheckCircle2 size={16} className="feature-icon" />
-                                            <span>{point}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-
-                                <div className="mobile-actions">
-                                    <a href={project.liveUrl} className="mobile-btn">
-                                        <ExternalLink size={16} /> Live Demo
-                                    </a>
-                                    <a href={project.githubUrl} className="mobile-btn">
-                                        <Github size={16} /> GitHub
-                                    </a>
-                                </div>
+                            {/* Mobile Only Actions */}
+                            <div className="mobile-card-actions">
+                                <a href={project.liveUrl} target="_blank" rel="noreferrer" className="m-btn primary">
+                                    Live Demo
+                                </a>
+                                <a href={project.githubUrl} target="_blank" rel="noreferrer" className="m-btn">
+                                    GitHub
+                                </a>
                             </div>
                         </div>
                     </div>
