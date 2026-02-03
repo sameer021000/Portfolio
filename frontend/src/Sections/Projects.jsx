@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { portfolioData } from "../Data/PortfolioData"
 import "../CSS/Projects.css"
-import { ExternalLink, Github, BookOpen, Terminal as TerminalIcon, Layers } from "lucide-react"
+import { ExternalLink, Github, BookOpen, Terminal as TerminalIcon } from "lucide-react"
 
 const ProjectCard = ({ project }) => {
     const [activeTab, setActiveTab] = useState("overview") // 'overview' | 'specs'
@@ -72,7 +72,7 @@ const ProjectCard = ({ project }) => {
                             <div className="dot green"></div>
                         </div>
                         <div className="terminal-body">
-                            <div className="code-line"><span className="comment">// Technical Specs</span></div>
+                            <div className="code-line"><span className="comment">{"// Technical Specs"}</span></div>
                             <div className="code-line"><span className="keyword">const</span> stack = [<span className="string">"{project.tech[0]}"</span>, <span className="string">"{project.tech[1]}"</span>];</div>
                             <br />
                             {getTechPoints(project.technicalDescription).map((point, idx) => (
