@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { portfolioData } from "../Data/PortfolioData"
 import "../CSS/Projects.css"
 import { ExternalLink, Github, Code2, Users, Terminal, ChevronRight } from "lucide-react"
