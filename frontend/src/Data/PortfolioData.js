@@ -40,21 +40,6 @@ export const portfolioData = {
     ],
     projects: [
         {
-            name: "Gold Artisan Web Application",
-            liveUrl: "https://goldartisan.vercel.app/",
-            githubUrl: "https://github.com/sameer021000/GoldArtisan",
-            tech: ["React.Js", "Node.Js", "MongoDB", "HTML", "CSS", "JavaScript"],
-            description: null,
-            generalDescription: "A user-friendly digital platform designed to help gold artisans streamline their work. It provides an easy way to register, manage profiles, and connect with potential clients, modernizing the traditional artisan trade.",
-            technicalDescription: [
-                "Built a full-stack web application using the MERN stack (MongoDB, Express, React, Node) architecture.",
-                "Implemented secure JWT authentication and role-based access control for artisans and admins.",
-                "Designed a responsive UI with React.js, utilizing Hooks and Context API for state management.",
-                "Deployed backend on Render and frontend on Vercel with CI/CD integration."
-            ],
-            image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1000&auto=format&fit=crop",
-        },
-        {
             name: "Smart Tasbeeh",
             liveUrl: "#",
             githubUrl: "https://github.com/sameer021000/Smart-Tasbeeh",
@@ -68,6 +53,21 @@ export const portfolioData = {
                 "Engineered an asynchronous auto-counting algorithm using Android Handlers and Runnables, featuring variable speed control and logic to handle target completion events."
             ],
             image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=1000&auto=format&fit=crop",
+        },
+        {
+            name: "Gold Artisan Web Application",
+            liveUrl: "https://goldartisan.vercel.app/",
+            githubUrl: "https://github.com/sameer021000/GoldArtisan",
+            tech: ["React.Js", "Node.Js", "MongoDB", "HTML", "CSS", "JavaScript"],
+            description: null,
+            generalDescription: "A user-friendly digital platform designed to help gold artisans streamline their work. It provides an easy way to register, manage profiles, and connect with potential clients, modernizing the traditional artisan trade.",
+            technicalDescription: [
+                "Built a full-stack web application using the MERN stack (MongoDB, Express, React, Node) architecture.",
+                "Implemented secure JWT authentication and role-based access control for artisans and admins.",
+                "Designed a responsive UI with React.js, utilizing Hooks and Context API for state management.",
+                "Deployed backend on Render and frontend on Vercel with CI/CD integration."
+            ],
+            image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1000&auto=format&fit=crop",
         },
         {
             name: "ShopMax E-Commerce",
