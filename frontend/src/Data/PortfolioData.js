@@ -45,12 +45,12 @@ export const portfolioData = {
             githubUrl: "https://github.com/sameer021000/Smart-Tasbeeh",
             tech: ["Java", "XML", "SQLite"],
             description: null,
-            generalDescription: "A versatile digital counter application designed to modernize the traditional act of counting prayers or affirmations. It offers a seamless experience for tracking daily counts, setting personal targets with completion alerts, and reviewing past sessions, ensuring users can focus on their counting without losing track of their progress.",
+            generalDescription: "A versatile digital Tasbeeh application designed to modernize and elevate the traditional act of Zikr. Beyond standard counting, it features a sophisticated Analysis Mode that tracks counting rhythm, speed, and consistency streaks to help users improve focus. With customizable haptic feedback, immersive sound effects, and detailed history tracking, it ensures a premium, distraction-free spiritual experience.",
             technicalDescription: [
-                "Built a native Android application using Java and XML, emphasizing efficient state management and Android lifecycle handling.",
-                "Implemented persistent data storage using SQLite to archive counting history and SharedPreferences for retaining application state and user preferences.",
-                "Designed a dynamic UI/UX featuring a draggable floating button, custom animations, and a 'Tap Anywhere' accessibility mode for enhanced usability.",
-                "Engineered an asynchronous auto-counting algorithm using Android Handlers and Runnables, featuring variable speed control and logic to handle target completion events."
+                "Engineered a statistical analysis engine to compute real-time metrics including counting consistency, average speeds, and max streaks, providing users with deep insights into their session patterns.",
+                "Designed a dynamic data visualization system using RecyclerView with custom Adapters and SnapHelper, converting raw data into interactive, swipeable 'Review Cards' for a premium user experience.",
+                "Integrated system-level hardware services (Vibrator, ToneGenerator) to create a customizable feedback system, delivering precise haptic and audio cues during user interactions.",
+                "Implemented robust local storage using SQLite for archiving detailed historical session data and SharedPreferences for managing granular app settings and user state across lifecycles."
             ],
             image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=1000&auto=format&fit=crop",
         },
