@@ -55,9 +55,9 @@ export const portfolioData = {
             image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1000&auto=format&fit=crop",
         },
         {
-            name: "Tasbeeh Counter App",
+            name: "Smart Tasbeeh",
             liveUrl: "#",
-            githubUrl: "#",
+            githubUrl: "https://github.com/sameer021000/Smart-Tasbeeh",
             tech: ["Java", "XML", "SQLite"],
             description: null,
             generalDescription: "A versatile digital counter application designed to modernize the traditional act of counting prayers or affirmations. It offers a seamless experience for tracking daily counts, setting personal targets with completion alerts, and reviewing past sessions, ensuring users can focus on their counting without losing track of their progress.",
