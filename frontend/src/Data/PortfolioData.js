@@ -1,3 +1,8 @@
+import analysisImg from "../Assets/analysis_screen_lighttheme_potrait.jpg";
+import counterImg from "../Assets/counter_screen_lighttheme_potrait.jpg";
+import historyImg from "../Assets/history_screen_lighttheme_potrait.jpg";
+import settingsImg from "../Assets/settings_screen_lighttheme_potrait.jpg";
+
 export const portfolioData = {
     name: "Sameer Shaik",
     email: "sameer021000@gmail.com",
@@ -43,6 +48,7 @@ export const portfolioData = {
             name: "Smart Tasbeeh",
             liveUrl: "https://github.com/sameer021000/Smart-Tasbeeh/releases/tag/v1.0.0",
             githubUrl: "https://github.com/sameer021000/Smart-Tasbeeh",
+            apkUrl: "https://github.com/sameer021000/Smart-Tasbeeh/releases/download/v1.0.0/app-release.apk",
             tech: ["Java", "XML", "SQLite"],
             description: null,
             generalDescription: "A versatile digital Tasbeeh application designed to modernize and elevate the traditional act of Zikr. Beyond standard counting, it features a hands-free Auto-Count mode, a draggable floating counter button for ergonomic usage, and goal-setting capabilities. With customizable haptic feedback, immersive sound effects, deep analysis of counting rhythm, and detailed history tracking with pinning support, it ensures a premium, distraction-free spiritual experience.",
@@ -52,7 +58,14 @@ export const portfolioData = {
                 "Developed a statistical analysis engine to compute real-time consistency metrics and visualized them using a custom RecyclerView with SnapHelper for interactive data review.",
                 "Integrated robust local storage using SQLite for archiving history with complex sorting/pinning, and SharedPreferences for managing granular app settings across lifecycle changes."
             ],
-            image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=1000&auto=format&fit=crop",
+            image: counterImg,
+            images: [
+                { src: counterImg, caption: "Counter Screen: Interactive digital tally counter with haptic feedback and sound controls." },
+                { src: analysisImg, caption: "Analysis Screen: Detailed statistical insights and rhythm tracking." },
+                { src: historyImg, caption: "History Screen: Comprehensive log of all your sessions with pinning support." },
+                { src: settingsImg, caption: "Settings Screen: Customize your experience with themes, sounds, and more." }
+            ],
+            badge: "Android App",
         },
         {
             name: "Gold Artisan Web Application",
