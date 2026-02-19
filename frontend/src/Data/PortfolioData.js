@@ -41,16 +41,16 @@ export const portfolioData = {
     projects: [
         {
             name: "Smart Tasbeeh",
-            liveUrl: "#",
+            liveUrl: "https://github.com/sameer021000/Smart-Tasbeeh/releases/tag/v1.0.0",
             githubUrl: "https://github.com/sameer021000/Smart-Tasbeeh",
             tech: ["Java", "XML", "SQLite"],
             description: null,
-            generalDescription: "A versatile digital Tasbeeh application designed to modernize and elevate the traditional act of Zikr. Beyond standard counting, it features a sophisticated Analysis Mode that tracks counting rhythm, speed, and consistency streaks to help users improve focus. With customizable haptic feedback, immersive sound effects, and detailed history tracking, it ensures a premium, distraction-free spiritual experience.",
+            generalDescription: "A versatile digital Tasbeeh application designed to modernize and elevate the traditional act of Zikr. Beyond standard counting, it features a hands-free Auto-Count mode, a draggable floating counter button for ergonomic usage, and goal-setting capabilities. With customizable haptic feedback, immersive sound effects, deep analysis of counting rhythm, and detailed history tracking with pinning support, it ensures a premium, distraction-free spiritual experience.",
             technicalDescription: [
-                "Engineered a statistical analysis engine to compute real-time metrics including counting consistency, average speeds, and max streaks, providing users with deep insights into their session patterns.",
-                "Designed a dynamic data visualization system using RecyclerView with custom Adapters and SnapHelper, converting raw data into interactive, swipeable 'Review Cards' for a premium user experience.",
-                "Integrated system-level hardware services (Vibrator, ToneGenerator) to create a customizable feedback system, delivering precise haptic and audio cues during user interactions.",
-                "Implemented robust local storage using SQLite for archiving detailed historical session data and SharedPreferences for managing granular app settings and user state across lifecycles."
+                "Engineered a thread-safe Auto-Count system using Handler and Runnable logic for precise interval timing (100ms–60s) without blocking the main UI thread.",
+                "Implemented custom touch-interception logic to create a draggable floating counter button with boundary constraints and coordinate persistence for optimal ergonomics.",
+                "Developed a statistical analysis engine to compute real-time consistency metrics and visualized them using a custom RecyclerView with SnapHelper for interactive data review.",
+                "Integrated robust local storage using SQLite for archiving history with complex sorting/pinning, and SharedPreferences for managing granular app settings across lifecycle changes."
             ],
             image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=1000&auto=format&fit=crop",
         },
