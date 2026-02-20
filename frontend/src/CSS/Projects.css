@@ -127,7 +127,7 @@
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
     /* Slightly lighter overlay */
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(2px);
     z-index: 1000;
     display: flex;
     align-items: center;
