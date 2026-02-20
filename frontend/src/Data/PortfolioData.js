@@ -48,7 +48,7 @@ export const portfolioData = {
             name: "Smart Tasbeeh",
             liveUrl: "https://github.com/sameer021000/Smart-Tasbeeh/releases/tag/v1.0.0",
             githubUrl: "https://github.com/sameer021000/Smart-Tasbeeh",
-            apkUrl: "https://github.com/sameer021000/Smart-Tasbeeh/releases/download/v1.0.0/app-release.apk",
+            apkUrl: "https://github.com/sameer021000/Smart-Tasbeeh/releases/download/v1.0.0/Smart-Tasbeeh-v1.0.0.apk",
             tech: ["Java", "XML", "SQLite"],
             description: null,
             generalDescription: "A versatile digital Tasbeeh application designed to modernize and elevate the traditional act of Zikr. Beyond standard counting, it features a hands-free Auto-Count mode, a draggable floating counter button for ergonomic usage, and goal-setting capabilities. With customizable haptic feedback, immersive sound effects, deep analysis of counting rhythm, and detailed history tracking with pinning support, it ensures a premium, distraction-free spiritual experience.",
