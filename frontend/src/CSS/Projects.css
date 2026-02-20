@@ -511,6 +511,10 @@
     .m-link {
         flex: 1;
         padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
         text-align: center;
         border-radius: 8px;
         text-decoration: none;
