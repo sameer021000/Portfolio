@@ -8,6 +8,13 @@ import expensesScreenImg from "../Assets/NoteCalcProjectAssets/expenses_screen.j
 import groupDashboardScreenImg from "../Assets/NoteCalcProjectAssets/group_dashboard_screen.jpg";
 import settingsScreen1Img from "../Assets/NoteCalcProjectAssets/settings_screen1.jpg";
 import settingsScreen2Img from "../Assets/NoteCalcProjectAssets/settings_screen2.jpg";
+import announcementPageImg from "../Assets/SaveTheThroneProjectAssets/announcement_page.jpg";
+import birthdaywishingPageImg from "../Assets/SaveTheThroneProjectAssets/birthdaywishing_page.jpg";
+import emergencyfamilymeetingPageImg from "../Assets/SaveTheThroneProjectAssets/emergencyfamilymeeting_page.jpg";
+import evidencefilePageImg from "../Assets/SaveTheThroneProjectAssets/evidencefile_page.jpg";
+import finalePageImg from "../Assets/SaveTheThroneProjectAssets/finale_page.jpg";
+import openingPageImg from "../Assets/SaveTheThroneProjectAssets/opening_page.jpg";
+import secretfilePageImg from "../Assets/SaveTheThroneProjectAssets/secretfile_page.jpg";
 
 export const portfolioData = {
     name: "Sameer Shaik",
@@ -112,6 +119,32 @@ export const portfolioData = {
                 "Deployed backend on Render and frontend on Vercel with CI/CD integration."
             ],
             image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1000&auto=format&fit=crop",
+        },
+        {
+            name: "Save The Throne",
+            liveUrl: "https://muhammadrazabirthday.vercel.app/",
+            githubUrl: "https://github.com/sameer021000/Muhammad-Raza-Birthday",
+            apkUrl: null,
+            tech: ["React.Js", "JavaScript", "HTML", "CSS"],
+            description: null,
+            generalDescription: "A cinematic, mobile-first interactive birthday experience for Muhammad Raza ('Mamma Darling'). This project transforms a traditional birthday greeting into an interactive adventure where the user is portrayed as the King of Hearts. The story unfolds through multiple animated scenes, humorous family moments, a royal courtroom, interactive celebrations, and finally concludes with a heartfelt birthday message.",
+            technicalDescription: [
+                "Engineered a mobile-first responsive design tailored for an immersive, cinematic experience.",
+                "Developed interactive story progression components featuring custom animations and smooth transitions.",
+                "Integrated dynamic audio feedback, sound effects, and visual elements like confetti and fireworks.",
+                "Built with React.js using Lucide React for iconography and modern ES6+ JavaScript."
+            ],
+            image: openingPageImg,
+            images: [
+                { src: openingPageImg, caption: "Opening Scene: The grand entrance to the royal experience." },
+                { src: secretfilePageImg, caption: "Confidential File: Uncovering the highly classified dossier." },
+                { src: evidencefilePageImg, caption: "Evidence Collection: Interactive collection of humorous evidence." },
+                { src: emergencyfamilymeetingPageImg, caption: "Emergency Meeting: Gathering the family for the royal verdict." },
+                { src: announcementPageImg, caption: "Royal Announcement: The official decree and celebration." },
+                { src: birthdaywishingPageImg, caption: "Cake Ceremony: Interactive birthday wishing and cake." },
+                { src: finalePageImg, caption: "Grand Finale: A heartfelt, emotional closing scene." }
+            ],
+            badge: "Web App",
         },
     ],
     education: [
