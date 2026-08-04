@@ -51,6 +51,31 @@ export const portfolioData = {
     ],
     projects: [
         {
+            name: "NoteCalc",
+            liveUrl: "https://github.com/sameer021000/NoteCalc/releases",
+            githubUrl: "https://github.com/sameer021000/NoteCalc",
+            apkUrl: "https://github.com/sameer021000/NoteCalc/releases/download/v1.0.0/NoteCalc-v1.0.0.apk",
+            tech: ["Java", "XML", "Android"],
+            description: null,
+            generalDescription: "A premium, offline-first Android expense tracker and calculator designed to bridge the gap between simple note-taking and structured financial tracking. It combines a stunning, modern interface with powerful tools like dual tracking modes, detailed PDF exports, and an organized dashboard for an intuitive accounting experience.",
+            technicalDescription: [
+                "Engineered a dual-mode financial tracking system (Expenses & Budgets) with dynamic total calculations and balances.",
+                "Developed a PDF Export Engine using native android.graphics.pdf.PdfDocument to generate multi-table, paginated reports.",
+                "Implemented a privacy-first, offline persistence layer using SharedPreferences with custom JSON (org.json.JSONObject) serialization, supporting full workspace backup and restore.",
+                "Designed a premium UI featuring glassmorphism, rounded layouts, fluid StateListDrawables, and edge-to-edge window insets."
+            ],
+            image: dashboardScreenImg,
+            images: [
+                { src: dashboardScreenImg, caption: "Dashboard Screen: Smart dashboard with dynamic search, quick sorting, and interactive states." },
+                { src: expensesScreenImg, caption: "Expenses Screen: Track your outgoing expenses with detailed lists and balances." },
+                { src: budgetScreenImg, caption: "Budgets Screen: Manage incoming budgets with dynamic totals." },
+                { src: groupDashboardScreenImg, caption: "Group Dashboard: Organize accounts seamlessly under custom folders." },
+                { src: settingsScreen1Img, caption: "Settings Screen: Privacy-first offline JSON backup system and app configurations." },
+                { src: settingsScreen2Img, caption: "Settings Screen: Customize the app with various export and theme options." }
+            ],
+            badge: "Android App",
+        },
+        {
             name: "Smart Tasbeeh",
             liveUrl: "https://github.com/sameer021000/Smart-Tasbeeh/releases",
             githubUrl: "https://github.com/sameer021000/Smart-Tasbeeh",
@@ -87,31 +112,6 @@ export const portfolioData = {
                 "Deployed backend on Render and frontend on Vercel with CI/CD integration."
             ],
             image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1000&auto=format&fit=crop",
-        },
-        {
-            name: "NoteCalc",
-            liveUrl: "https://github.com/sameer021000/NoteCalc/releases",
-            githubUrl: "https://github.com/sameer021000/NoteCalc",
-            apkUrl: "https://github.com/sameer021000/NoteCalc/releases/download/v1.0.0/NoteCalc-v1.0.0.apk",
-            tech: ["Java", "XML", "Android"],
-            description: null,
-            generalDescription: "A premium, offline-first Android expense tracker and calculator designed to bridge the gap between simple note-taking and structured financial tracking. It combines a stunning, modern interface with powerful tools like dual tracking modes, detailed PDF exports, and an organized dashboard for an intuitive accounting experience.",
-            technicalDescription: [
-                "Engineered a dual-mode financial tracking system (Expenses & Budgets) with dynamic total calculations and balances.",
-                "Developed a PDF Export Engine using native android.graphics.pdf.PdfDocument to generate multi-table, paginated reports.",
-                "Implemented a privacy-first, offline persistence layer using SharedPreferences with custom JSON (org.json.JSONObject) serialization, supporting full workspace backup and restore.",
-                "Designed a premium UI featuring glassmorphism, rounded layouts, fluid StateListDrawables, and edge-to-edge window insets."
-            ],
-            image: dashboardScreenImg,
-            images: [
-                { src: dashboardScreenImg, caption: "Dashboard Screen: Smart dashboard with dynamic search, quick sorting, and interactive states." },
-                { src: expensesScreenImg, caption: "Expenses Screen: Track your outgoing expenses with detailed lists and balances." },
-                { src: budgetScreenImg, caption: "Budgets Screen: Manage incoming budgets with dynamic totals." },
-                { src: groupDashboardScreenImg, caption: "Group Dashboard: Organize accounts seamlessly under custom folders." },
-                { src: settingsScreen1Img, caption: "Settings Screen: Privacy-first offline JSON backup system and app configurations." },
-                { src: settingsScreen2Img, caption: "Settings Screen: Customize the app with various export and theme options." }
-            ],
-            badge: "Android App",
         },
     ],
     education: [
