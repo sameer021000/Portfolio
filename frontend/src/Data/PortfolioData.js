@@ -2,6 +2,12 @@ import analysisImg from "../Assets/analysis_screen_lighttheme_potrait.jpg";
 import counterImg from "../Assets/counter_screen_lighttheme_potrait.jpg";
 import historyImg from "../Assets/history_screen_lighttheme_potrait.jpg";
 import settingsImg from "../Assets/settings_screen_lighttheme_potrait.jpg";
+import dashboardScreenImg from "../Assets/NoteCalcProjectAssets/dashboard_screen.jpg";
+import budgetScreenImg from "../Assets/NoteCalcProjectAssets/budget_screen.jpg";
+import expensesScreenImg from "../Assets/NoteCalcProjectAssets/expenses_screen.jpg";
+import groupDashboardScreenImg from "../Assets/NoteCalcProjectAssets/group_dashboard_screen.jpg";
+import settingsScreen1Img from "../Assets/NoteCalcProjectAssets/settings_screen1.jpg";
+import settingsScreen2Img from "../Assets/NoteCalcProjectAssets/settings_screen2.jpg";
 
 export const portfolioData = {
     name: "Sameer Shaik",
@@ -83,19 +89,29 @@ export const portfolioData = {
             image: "https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1000&auto=format&fit=crop",
         },
         {
-            name: "ShopMax E-Commerce",
-            liveUrl: "#",
-            githubUrl: "#",
-            tech: ["React.Js", "Redux", "Firebase", "Stripe"],
+            name: "NoteCalc",
+            liveUrl: "https://github.com/sameer021000/NoteCalc/releases",
+            githubUrl: "https://github.com/sameer021000/NoteCalc",
+            apkUrl: "https://github.com/sameer021000/NoteCalc/releases/download/v1.0.0/NoteCalc-v1.0.0.apk",
+            tech: ["Java", "XML", "Android"],
             description: null,
-            generalDescription: "A modern online shopping platform featuring a seamless checkout experience. Users can browse products, add them to a wishlist, and purchase securely using integrated payment gateways.",
+            generalDescription: "A premium, offline-first Android expense tracker and calculator designed to bridge the gap between simple note-taking and structured financial tracking. It combines a stunning, modern interface with powerful tools like dual tracking modes, detailed PDF exports, and an organized dashboard for an intuitive accounting experience.",
             technicalDescription: [
-                "Implemented Redux Toolkit for efficient global state management of the shopping cart.",
-                "Integrated Stripe API for secure and PCI-compliant payment processing.",
-                "Used Firebase Authentication and Cloud Firestore for real-time user data sync.",
-                "Optimized rendering performance using React.memo and code-splitting."
+                "Engineered a dual-mode financial tracking system (Expenses & Budgets) with dynamic total calculations and balances.",
+                "Developed a PDF Export Engine using native android.graphics.pdf.PdfDocument to generate multi-table, paginated reports.",
+                "Implemented a privacy-first, offline persistence layer using SharedPreferences with custom JSON (org.json.JSONObject) serialization, supporting full workspace backup and restore.",
+                "Designed a premium UI featuring glassmorphism, rounded layouts, fluid StateListDrawables, and edge-to-edge window insets."
             ],
-            image: "https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=1000&auto=format&fit=crop",
+            image: dashboardScreenImg,
+            images: [
+                { src: dashboardScreenImg, caption: "Dashboard Screen: Smart dashboard with dynamic search, quick sorting, and interactive states." },
+                { src: expensesScreenImg, caption: "Expenses Screen: Track your outgoing expenses with detailed lists and balances." },
+                { src: budgetScreenImg, caption: "Budgets Screen: Manage incoming budgets with dynamic totals." },
+                { src: groupDashboardScreenImg, caption: "Group Dashboard: Organize accounts seamlessly under custom folders." },
+                { src: settingsScreen1Img, caption: "Settings Screen: Privacy-first offline JSON backup system and app configurations." },
+                { src: settingsScreen2Img, caption: "Settings Screen: Customize the app with various export and theme options." }
+            ],
+            badge: "Android App",
         },
     ],
     education: [
