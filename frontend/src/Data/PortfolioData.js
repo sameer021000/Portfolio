@@ -61,7 +61,7 @@ export const portfolioData = {
             name: "NoteCalc",
             liveUrl: "https://github.com/sameer021000/NoteCalc/releases",
             githubUrl: "https://github.com/sameer021000/NoteCalc",
-            apkUrl: "https://github.com/sameer021000/NoteCalc/releases/download/v1.2.0/NoteCalc.v1.2.0.apk",
+            apkUrl: "https://github.com/sameer021000/NoteCalc/releases/download/v1.4.0/NoteCalc.v1.4.0.apk",
             tech: ["Java", "XML", "Android"],
             description: null,
             generalDescription: "A premium, offline-first Android expense tracker and calculator designed to bridge the gap between simple note-taking and structured financial tracking. It combines a stunning, modern interface with powerful tools like dual tracking modes, detailed PDF exports, and an organized dashboard for an intuitive accounting experience.",
