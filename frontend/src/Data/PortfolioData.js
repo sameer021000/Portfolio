@@ -6,8 +6,8 @@ import dashboardScreenImg from "../Assets/NoteCalcProjectAssets/dashboard_screen
 import budgetScreenImg from "../Assets/NoteCalcProjectAssets/budget_screen_v1.7.0.jpg";
 import expensesScreenImg from "../Assets/NoteCalcProjectAssets/expenses_screen_v1.7.0.jpg";
 import groupDashboardScreenImg from "../Assets/NoteCalcProjectAssets/group_dashboard_screen_v1.6.0.jpg";
-import settingsScreen1Img from "../Assets/NoteCalcProjectAssets/settings_screen1_v1.6.0.jpg";
-import settingsScreen2Img from "../Assets/NoteCalcProjectAssets/settings_screen2_v1.6.0.jpg";
+import settingsScreen1Img from "../Assets/NoteCalcProjectAssets/settings_screen1_v1.8.0.jpg";
+import settingsScreen2Img from "../Assets/NoteCalcProjectAssets/settings_screen2_v1.8.0.jpg";
 import announcementPageImg from "../Assets/SaveTheThroneProjectAssets/announcement_page.jpg";
 import birthdaywishingPageImg from "../Assets/SaveTheThroneProjectAssets/birthdaywishing_page.jpg";
 import emergencyfamilymeetingPageImg from "../Assets/SaveTheThroneProjectAssets/emergencyfamilymeeting_page.jpg";
@@ -61,7 +61,7 @@ export const portfolioData = {
             name: "NoteCalc",
             liveUrl: "https://github.com/sameer021000/NoteCalc/releases",
             githubUrl: "https://github.com/sameer021000/NoteCalc",
-            apkUrl: "https://github.com/sameer021000/NoteCalc/releases/download/v1.7.0/NoteCalc.v1.7.0.apk",
+            apkUrl: "https://github.com/sameer021000/NoteCalc/releases/download/v1.8.0/NoteCalc.v1.8.0.apk",
             tech: ["Java", "XML", "Android"],
             description: null,
             generalDescription: "A premium, offline-first Android expense tracker and calculator designed to bridge the gap between simple note-taking and structured financial tracking. It combines a stunning, modern interface with powerful tools like dual tracking modes, detailed PDF exports, and an organized dashboard for an intuitive accounting experience.",
